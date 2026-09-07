@@ -1,0 +1,202 @@
+<sdf version='1.7'>
+  <model name='dyfree_robot'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0 0 0.0002 0 -0 0</pose>
+        <mass>200.2</mass>
+        <inertia>
+          <ixx>5.02799</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>5.02799</iyy>
+          <iyz>0</iyz>
+          <izz>5.02</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.3</radius>
+          </cylinder>
+        </geometry>
+        <surface>
+          <contact>
+            <ode/>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <collision name='base_link_fixed_joint_lump__livox_base_collision_1'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://livox_laser_simulation/meshes/livox_mid40.dae</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <cylinder>
+            <length>0.2</length>
+            <radius>0.3</radius>
+          </cylinder>
+        </geometry>
+      </visual>
+      <visual name='base_link_fixed_joint_lump__livox_base_visual_1'>
+        <pose>0 0 0.2 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://livox_laser_simulation/meshes/livox_mid40.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <gravity>0</gravity>
+      <sensor name='imu_sensor' type='imu'>
+        <always_on>1</always_on>
+        <update_rate>200</update_rate>
+        <visualize>1</visualize>
+        <topic>__default_topic__</topic>
+        <imu>
+          <angular_velocity>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0008</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0008</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.0008</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.001</bias_stddev>
+              </noise>
+            </z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.015</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.02</bias_stddev>
+              </noise>
+            </x>
+            <y>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.015</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.02</bias_stddev>
+              </noise>
+            </y>
+            <z>
+              <noise type='gaussian'>
+                <mean>0</mean>
+                <stddev>0.015</stddev>
+                <bias_mean>0</bias_mean>
+                <bias_stddev>0.02</bias_stddev>
+              </noise>
+            </z>
+          </linear_acceleration>
+        </imu>
+        <plugin name='imu_plugin' filename='libgazebo_ros_imu_sensor.so'>
+          <topicName>/imu/data</topicName>
+          <bodyName>base_link</bodyName>
+          <updateRateHZ>200.0</updateRateHZ>
+          <gaussianNoise>0.0</gaussianNoise>
+          <xyzOffset>0 0 0</xyzOffset>
+          <rpyOffset>0 0 0</rpyOffset>
+          <frameName>base_link</frameName>
+        </plugin>
+        <pose>0 0 0 0 -0 0</pose>
+      </sensor>
+      <sensor name='laser_livox' type='ray'>
+        <visualize>1</visualize>
+        <always_on>1</always_on>
+        <update_rate>10</update_rate>
+        <plugin name='gazebo_ros_laser_controller' filename='liblivox_laser_simulation.so'>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>100</samples>
+                <resolution>1</resolution>
+                <min_angle>0</min_angle>
+                <max_angle>6.28318</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>360</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.12601266555555554</min_angle>
+                <max_angle>0.9637699988888888</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>200.0</max>
+              <resolution>0.002</resolution>
+            </range>
+            <noise>
+              <type>gaussian</type>
+              <mean>0.0</mean>
+              <stddev>0.01</stddev>
+            </noise>
+          </ray>
+          <visualize>1</visualize>
+          <samples>24000</samples>
+          <downsample>1</downsample>
+          <csv_file_name>package://livox_laser_simulation/scan_mode/mid360.csv</csv_file_name>
+          <ros_topic>scan</ros_topic>
+        </plugin>
+        <pose>0 0 0.2 0 -0 0</pose>
+      </sensor>
+    </link>
+    <plugin name='object_controller' filename='libgazebo_ros_planar_move.so'>
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <odometryRate>50.0</odometryRate>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <publishOdomTF>1</publishOdomTF>
+    </plugin>
+    <plugin name='p3d_base_controller' filename='libgazebo_ros_p3d.so'>
+      <alwaysOn>1</alwaysOn>
+      <updateRate>200.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>/ground_truth/state</topicName>
+      <gaussianNoise>0.00</gaussianNoise>
+      <frameName>world</frameName>
+      <xyzOffsets>0 0 0</xyzOffsets>
+      <rpyOffsets>0 0 0</rpyOffsets>
+    </plugin>
+    <frame name='base_to_laser_livox' attached_to='base_link'>
+      <pose>0 0 0.2 0 -0 0</pose>
+    </frame>
+    <frame name='laser_livox' attached_to='base_to_laser_livox'/>
+    <frame name='livox_to_livox_base_joint' attached_to='livox_base'>
+      <pose>0 0 0 0 -0 0</pose>
+    </frame>
+    <frame name='livox' attached_to='livox_to_livox_base_joint'/>
+    <frame name='livox_base_to_parent_joint' attached_to='base_link'>
+      <pose>0 0 0.2 0 -0 0</pose>
+    </frame>
+    <frame name='livox_base' attached_to='livox_base_to_parent_joint'/>
+  </model>
+</sdf>

@@ -3,518 +3,387 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="PAPER_TITLE - AUTHOR_NAMES">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="KEYWORD1, KEYWORD2, KEYWORD3, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="FIRST_AUTHOR_NAME, SECOND_AUTHOR_NAME">
-  <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
-  <!-- TODO: Same as paper title above -->
-  <meta property="og:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Replace with your actual website URL -->
-  <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
-  <!-- TODO: Create a 1200x630px preview image and update path -->
-  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
-  <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <!-- TODO: Same as paper title above -->
-  <meta name="twitter:title" content="PAPER_TITLE">
-  <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
-  <!-- TODO: Same as social preview image above -->
-  <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
-  <meta name="twitter:image:alt" content="PAPER_TITLE - Research Preview">
-
-  <!-- Academic/Research Specific -->
-  <meta name="citation_title" content="PAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
+  <title>DOR-LIO: Robust Tightly-Coupled LiDAR-Inertial Odometry with Online Dynamic Object Removal</title>
+  <meta name="description" content="DOR-LIO jointly performs tightly-coupled LiDAR-inertial state estimation and online dynamic object removal within a unified multi-resolution voxel map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>PAPER_TITLE - AUTHOR_NAMES | Academic Research</title>
-  
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-  <link rel="apple-touch-icon" href="static/images/favicon.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
-  <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ScholarlyArticle",
-    "headline": "PAPER_TITLE",
-    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
-      }
-    ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
-  }
-  </script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
 
+<!-- ============================ NAV ============================ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">DOR&#8209;LIO</a>
+    <div class="nav-links">
+      <a href="#abstract">Abstract</a>
+      <a href="#method">Method</a>
+      <a href="#explorer">Point&nbsp;Cloud</a>
+      <a href="#compare">Before&nbsp;/&nbsp;After</a>
+      <a href="#video">Video</a>
+      <a href="#public-datasets">Public&nbsp;Datasets</a>
+      <a href="#our-datasets">Our&nbsp;Datasets</a>
+      <a href="#simlab">Sim&nbsp;Lab</a>
+      <a href="#citation">Citation</a>
+    </div>
+    <a class="nav-gh" href="https://github.com/chihuaji/DOR-LIO" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      Code
+    </a>
+  </div>
+</nav>
 
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Dropdown -->
-  <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
-      <i class="fas fa-flask"></i>
-      More Works
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
-    </button>
-    <div class="more-works-dropdown" id="moreWorksDropdown">
-      <div class="dropdown-header">
-        <h4>More Works from Our Lab</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      <div class="works-list">
-        <!-- TODO: Replace with your lab's related works -->
-        <a href="https://arxiv.org/abs/PAPER_ID_1" class="work-item" target="_blank">
-          <div class="work-info">
-            <!-- TODO: Replace with actual paper title -->
-            <h5>Paper Title 1</h5>
-            <!-- TODO: Replace with brief description -->
-            <p>Brief description of the work and its main contribution.</p>
-            <!-- TODO: Replace with venue and year -->
-            <span class="work-venue">Conference/Journal 2024</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <!-- TODO: Add more related works or remove extra items -->
-        <a href="https://arxiv.org/abs/PAPER_ID_2" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 2</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-        <a href="https://arxiv.org/abs/PAPER_ID_3" class="work-item" target="_blank">
-          <div class="work-info">
-            <h5>Paper Title 3</h5>
-            <p>Brief description of the work and its main contribution.</p>
-            <span class="work-venue">Conference/Journal 2023</span>
-          </div>
-          <i class="fas fa-external-link-alt"></i>
-        </a>
-      </div>
+<!-- ============================ HERO ============================ -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="tag">Tightly-Coupled LIO</span>
+      <span class="tag tag-alt">Online Dynamic Object Removal</span>
+      <span class="tag">Unified Voxel Map</span>
+      <span class="tag tag-alt">&gt; 32 Hz on CPU</span>
+    </div>
+    <h1>DOR-LIO</h1>
+    <p class="hero-sub">A Robust and Tightly-Coupled LiDAR-Inertial Odometry<br class="br-md">with Online Dynamic Object Removal</p>
+    <p class="hero-authors">
+      <a href="#">Anonymous Authors</a><sup>1</sup>, <a href="#">Anonymous</a><sup>1</sup>, <a href="#">Anonymous</a><sup>1</sup>
+    </p>
+    <p class="hero-affil"><sup>1</sup> Anonymous Institution</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="#" target="_blank" rel="noopener">📄 Paper (PDF)</a>
+      <a class="btn" href="https://github.com/chihuaji/DOR-LIO" target="_blank" rel="noopener">Code &amp; Datasets</a>
+      <a class="btn" href="#video">▶ Video</a>
     </div>
   </div>
+</header>
 
-  <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">First Author</a><sup>*</sup>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Second Author</a><sup>*</sup>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Third Author</a>
-                  </span>
-                  </div>
+<main class="container">
 
-                  <div class="is-size-5 publication-authors">
-                    <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
-                    <!-- TODO: Remove this line if no equal contribution -->
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- TODO: Update with your arXiv paper ID -->
-                      <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                    <!-- TODO: Add your supplementary material PDF or remove this section -->
-                    <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span>
-
-                  <!-- TODO: Replace with your GitHub repository URL -->
-                  <span class="link-block">
-                    <a href="https://github.com/YOUR REPO HERE" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- TODO: Update with your arXiv paper ID -->
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-            </div>
-          </div>
+<!-- ============================ ABSTRACT ============================ -->
+<section id="abstract" class="section">
+  <h2 class="section-title">Abstract</h2>
+  <div class="abstract-grid">
+    <div class="abstract-text">
+      <p>Robust state estimation and high-fidelity mapping in dynamic environments remain challenging
+      for LiDAR-Inertial Odometry (LIO) due to the violation of the static-world assumption. Moving
+      objects introduce inconsistent observations that degrade pose estimation and contaminate the
+      reconstructed map. Existing dynamic object removal (DOR) approaches are typically implemented
+      as loosely-coupled pre-processing or offline modules, creating a <em>circular dependency</em>
+      between dynamic filtering and pose estimation.</p>
+      <p>We propose <strong>DOR-LIO</strong>, a tightly-coupled LiDAR-inertial odometry framework that
+      <strong>jointly performs state estimation and online dynamic object removal</strong>. Our system
+      maintains a voxel-level dynamic map and assigns dynamic levels through visibility-based reasoning.
+      During state estimation, only static points are used for residual computation in the Iterated
+      Error-State Kalman Filter (IESKF), preventing dynamic outliers from affecting scan-to-map
+      alignment. A unified multi-resolution map supports both efficient nearest-neighbor search and
+      rapid ray-casting within a single data structure.</p>
+      <p>Experiments on public datasets, customized simulations, and multi-platform real-world
+      deployments demonstrate that DOR-LIO achieves robust localization and produces clean static
+      maps in highly dynamic environments.</p>
+    </div>
+    <figure class="teaser-fig">
+      <div class="teaser-pair">
+        <div class="teaser-item">
+          <img src="images/teaser_raw.png" alt="Raw map by FAST-LIO2 with dynamic artifacts">
+          <figcaption>(a) Raw map by FAST-LIO2</figcaption>
+        </div>
+        <div class="teaser-item">
+          <img src="images/teaser_clean.png" alt="Clean static map by DOR-LIO">
+          <figcaption>(b) Clean static map by DOR-LIO (Ours)</figcaption>
         </div>
       </div>
+      <p class="fig-caption">Fig. 1 — Mapping results on the <em>Humanoid-01</em> sequence: dynamic
+      artifacts contaminate the conventional map (a), while DOR-LIO reconstructs a purely static map (b).</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ METHOD ============================ -->
+<section id="method" class="section">
+  <h2 class="section-title">Method Overview</h2>
+  <figure class="figure">
+    <img src="images/pipeline.png" alt="DOR-LIO system architecture">
+    <p class="fig-caption">Fig. 2 — System architecture. The tightly-coupled pipeline consists of three
+    interconnected modules: (1) <strong>State Estimation</strong> fuses IMU and static map points via an IESKF;
+    (2) <strong>Dynamic Object Removal</strong> leverages the estimated pose to deskew scans and filter moving
+    objects through free-space estimation; (3) <strong>Map Refinement</strong> maintains and clears the static
+    voxel map. A mutual-gain closed loop replaces the circular dependency of loosely-coupled designs.</p>
+  </figure>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧮</div>
+      <h3>Tightly-Coupled DOR</h3>
+      <p>Dynamic probability weighting is integrated directly into the IESKF — only voxels with the lowest
+      dynamic level contribute residuals, so moving outliers never corrupt scan-to-map alignment.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🗂️</div>
+      <h3>Unified Multi-Resolution Map</h3>
+      <p>One sparse voxel structure serves both O(1)-style nearest-neighbor search for IESKF updates and
+      conservative ray-casting for visibility-based dynamic reasoning — no disjoint map/localization modules.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚶</div>
+      <h3>Four-Level Dynamic Reasoning</h3>
+      <p>Voxels carry ordered levels <code>static &lt; aggressive &lt; moderate &lt; dynamic</code>, with spatial
+      dilation near motion boundaries that separates moving structures from genuine static geometry.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧹</div>
+      <h3>Online Map Clearing</h3>
+      <p>Temporarily static objects that later vacate the scene generate incremental FreeSpace that targets
+      ghost subvoxels for removal — even mistakes made during initialization are corrected online.</p>
+    </div>
+  </div>
+  <div class="method-figs">
+    <figure class="figure">
+      <img src="images/residual_a.png" alt="FAST-LIO2 residual selection">
+      <p class="fig-caption">FAST-LIO2 matches dynamic features (white box).</p>
+    </figure>
+    <figure class="figure">
+      <img src="images/residual_b.png" alt="DOR-LIO residual selection">
+      <p class="fig-caption">DOR-LIO selects only static points (purple).</p>
+    </figure>
+    <figure class="figure">
+      <img src="images/map_clearing.png" alt="Map clearing illustration">
+      <p class="fig-caption">Map clearing via incremental FreeSpace.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ==================== INTERACTIVE EXPLORER ==================== -->
+<section id="explorer" class="section section-dark">
+  <h2 class="section-title">Interactive Point Cloud Explorer</h2>
+  <p class="section-sub">A real static map reconstructed online by DOR-LIO.
+  <strong>Drag to orbit</strong>, <strong>scroll to zoom</strong>, right-drag to pan — the full map is
+  streamed to your browser.</p>
+  <div class="explorer-shell" id="explorer-root">
+    <div class="explorer-tabs" id="explorer-tabs"></div>
+    <div id="explorer-viewer" class="viewer-mount"></div>
+    <p class="scene-note" id="explorer-note"></p>
+  </div>
+</section>
+
+<!-- ==================== BEFORE / AFTER WIPE ==================== -->
+<section id="compare" class="section section-dark">
+  <h2 class="section-title">Before / After Dynamic Removal</h2>
+  <p class="section-sub">Drag the vertical handle to wipe between the raw accumulation
+  (with dynamic artifacts, <span class="red-inline">red</span>) and the clean static map produced by
+  DOR-LIO. The camera can be orbited while wiping.</p>
+  <div class="explorer-shell" id="compare-root">
+    <div class="explorer-tabs" id="compare-tabs"></div>
+    <div id="compare-viewer" class="viewer-mount"></div>
+    <p class="scene-note" id="compare-note"></p>
+  </div>
+</section>
+
+<!-- ==================== LIVE SIMULATION LAB ==================== -->
+<section id="simlab" class="section section-dark">
+  <h2 class="section-title">Live Simulation Lab · 仿真实验室</h2>
+  <p class="section-sub">在浏览器里配置一场属于你的动态场景：选择<strong>房间大小、静态方块数量、
+  行走行人数、随机种子</strong>——方块布局与行人路线随种子随机生成，机器人巡游路线随机。
+  后台将真实运行 Gazebo 仿真与 DOR-LIO，随后在下方对比「<strong>无滤除原始累积</strong>」与
+  「<strong>DOR-LIO 在线滤除</strong>」两种地图。</p>
+  <div id="simlab-root"></div>
+</section>
+
+<!-- ============================ VIDEO ============================ -->
+<section id="video" class="section">
+  <h2 class="section-title">Video</h2>
+  <p class="section-sub">Coming soon — replace the placeholder below with your result video
+  (YouTube / Bilibili iframe or an MP4 in <code>videos/</code>).</p>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-placeholder">
+        <div class="video-play">▶</div>
+        <p>Main result video<br><small>placeholder — drop an &lt;iframe&gt; or &lt;video&gt; here</small></p>
+      </div>
+      <div class="video-card-title">DOR-LIO Overview</div>
+    </div>
+    <div class="video-card">
+      <div class="video-placeholder">
+        <div class="video-play">▶</div>
+        <p>Mall sequence playback<br><small>placeholder</small></p>
+      </div>
+      <div class="video-card-title">Highly Dynamic Mall</div>
+    </div>
+    <div class="video-card">
+      <div class="video-placeholder">
+        <div class="video-play">▶</div>
+        <p>Multi-platform deployment<br><small>placeholder</small></p>
+      </div>
+      <div class="video-card-title">Cross-Platform Runs</div>
     </div>
   </div>
 </section>
 
+<!-- ==================== PUBLIC DATASETS ==================== -->
+<section id="public-datasets" class="section">
+  <h2 class="section-title">Results on Public Datasets</h2>
+  <p class="section-sub">Localization accuracy on the <strong>M3DGR</strong> dynamic-ground benchmark
+  (APE translation RMSE / mean, meters) and dynamic-removal quality in Gazebo simulation.</p>
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <!-- TODO: Replace with your teaser video -->
-      <video poster="" id="tree" autoplay controls muted loop height="100%" preload="metadata">
-        <!-- TODO: Add your video file path here -->
-        <source src="static/videos/banner_video.mp4" type="video/mp4">
-      </video>
-      <!-- TODO: Replace with your video description -->
-      <h2 class="subtitle has-text-centered">
-        Aliquam vitae elit ullamcorper tellus egestas pellentesque. Ut lacus tellus, maximus vel lectus at, placerat pretium mi. Maecenas dignissim tincidunt vestibulum. Sed consequat hendrerit nisl ut maximus. 
-      </h2>
+  <h3 class="table-title">Table II — M3DGR: translation APE (m)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Sequence</th><th>A-LOAM</th><th>LIO-SAM</th><th>Dynamic-LIO</th><th>VoxelMap</th><th>FAST-LIO2</th><th class="ours">DOR-LIO (Ours)</th></tr></thead>
+      <tbody>
+        <tr><td>Dynamic01</td><td>0.171 / 0.149</td><td>0.140 / 0.125</td><td>0.140 / 0.124</td><td>0.625 / 0.351</td><td>0.143 / 0.128</td><td class="ours"><b>0.138 / 0.123</b></td></tr>
+        <tr><td>Dynamic02</td><td>0.147 / 0.131</td><td><b>0.136</b> / 0.124</td><td>0.149 / 0.137</td><td>0.127 / 0.117</td><td>0.138 / 0.126</td><td class="ours"><b>0.136</b> / 0.125</td></tr>
+        <tr><td>Dynamic03</td><td>0.640 / 0.553</td><td>0.237 / 0.200</td><td>0.172 / 0.165</td><td>0.171 / 0.165</td><td><b>0.166</b> / 0.160</td><td class="ours">0.176 / 0.170</td></tr>
+        <tr><td>Dynamic04</td><td>0.703 / 0.673</td><td class="fail">×</td><td><b>0.185</b> / 0.174</td><td>0.255 / 0.242</td><td>0.186 / 0.178</td><td class="ours">0.220 / 0.213</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="table-note">× — LIO-SAM fails on Dynamic04 due to severe odometry drift. Bold = best RMSE per row.</p>
+
+  <h3 class="table-title">Table III — Gazebo simulation: dynamic object removal (%)</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th rowspan="2">Method</th><th colspan="3">Gazebo Seq. 01</th><th colspan="3">Gazebo Seq. 02</th><th colspan="3">Gazebo Seq. 03</th></tr>
+      <tr><th>PR ↑</th><th>RR ↑</th><th>F1 ↑</th><th>PR ↑</th><th>RR ↑</th><th>F1 ↑</th><th>PR ↑</th><th>RR ↑</th><th>F1 ↑</th></tr></thead>
+      <tbody>
+        <tr><td>Removert + FAST-LIO2</td><td>53.36</td><td>82.87</td><td>64.92</td><td>59.06</td><td>85.94</td><td>70.01</td><td>57.47</td><td>80.92</td><td>67.21</td></tr>
+        <tr><td>FreeDOM + FAST-LIO2</td><td>70.34</td><td>87.48</td><td>77.98</td><td><b>76.29</b></td><td>83.42</td><td>79.70</td><td>63.08</td><td><b>90.99</b></td><td>74.51</td></tr>
+        <tr><td class="ours">DOR-LIO (Ours)</td><td class="ours"><b>71.60</b></td><td class="ours"><b>89.74</b></td><td class="ours"><b>79.65</b></td><td class="ours"><b>76.88</b></td><td class="ours"><b>87.50</b></td><td class="ours"><b>81.84</b></td><td class="ours"><b>68.05</b></td><td class="ours">89.67</td><td class="ours"><b>77.38</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="table-title">Table V — Gazebo: map quality vs. ground truth</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th rowspan="2">Method</th><th colspan="2">Gazebo Seq. 01</th><th colspan="2">Gazebo Seq. 02</th></tr>
+      <tr><th>CD (m) ↓</th><th>RMSE (m) ↓</th><th>CD (m) ↓</th><th>RMSE (m) ↓</th></tr></thead>
+      <tbody>
+        <tr><td>FAST-LIO2</td><td>0.653</td><td>0.468</td><td>0.857</td><td>0.476</td></tr>
+        <tr><td>Removert</td><td>0.267</td><td>0.124</td><td>0.172</td><td>0.058</td></tr>
+        <tr><td>Dynamic-LIO</td><td>0.779</td><td>0.393</td><td class="fail">×</td><td class="fail">×</td></tr>
+        <tr><td class="ours">DOR-LIO (Ours)</td><td class="ours"><b>0.082</b></td><td class="ours"><b>0.055</b></td><td class="ours"><b>0.076</b></td><td class="ours"><b>0.031</b></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="figure">
+    <img src="images/gazebo_qualitative.png" alt="Gazebo qualitative results">
+    <p class="fig-caption">Fig. 6 — Gazebo simulation with dense moving interference. FAST-LIO2 suffers severe
+    ghosting (c); DOR-LIO reconstructs a clean, purely static environment (d).</p>
+  </figure>
+</section>
+
+<!-- ==================== OUR DATASETS ==================== -->
+<section id="our-datasets" class="section section-tint">
+  <h2 class="section-title">Results on Our Cross-Device Dataset</h2>
+  <p class="section-sub">Eight real-world sequences collected across four platforms — quadruped,
+  omni-directional UGV, humanoid, and handheld — demonstrating hardware-agnostic robustness against
+  varied kinematic disturbances. <em>All data and code will be released.</em></p>
+
+  <figure class="figure">
+    <img src="images/platforms.png" alt="Hardware platforms and mapping results">
+    <p class="fig-caption">Fig. 8 — Hardware platforms and representative mapping results: quadruped
+    (Stair 01), omni-directional UGV (Omni-UGV 01), humanoid (Humanoid 01), handheld suite (Mall 01).</p>
+  </figure>
+
+  <div class="two-col">
+    <div>
+      <h3 class="table-title">Table IV — Map quality without GT (MME ↓)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sequence</th><th>LIO-SAM</th><th>FAST-LIO2</th><th class="ours">DOR-LIO</th></tr></thead>
+          <tbody>
+            <tr><td>M3DGR Dy01</td><td>−3.163</td><td>−2.938</td><td class="ours"><b>−3.176</b></td></tr>
+            <tr><td>M3DGR Dy02</td><td>−2.499</td><td>−2.975</td><td class="ours"><b>−3.245</b></td></tr>
+            <tr><td>Mall Seq. 01</td><td class="fail">×</td><td>−3.078</td><td class="ours"><b>−3.438</b></td></tr>
+            <tr><td>Mall Seq. 02</td><td>−3.140</td><td>−3.220</td><td class="ours"><b>−3.560</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3 class="table-title">Table VI — Mall end-to-end drift (m)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Method</th><th>Mall Seq. 1</th><th>Mall Seq. 2</th></tr></thead>
+          <tbody>
+            <tr><td>FAST-LIO2</td><td>0.072</td><td>0.029</td></tr>
+            <tr><td class="ours">DOR-LIO (Ours)</td><td class="ours"><b>0.041</b></td><td class="ours"><b>0.004</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note">Accumulated translation drift over physically closed trajectories in a
+      crowded shopping mall.</p>
     </div>
   </div>
-</section>
-<!-- End teaser video -->
 
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <!-- TODO: Replace with your paper abstract -->
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
-          </p>
-        </div>
-      </div>
+  <figure class="figure">
+    <img src="images/mall_qualitative.png" alt="Qualitative mapping results in a shopping mall">
+    <p class="fig-caption">Fig. 9 — Mapping in a highly dynamic shopping mall. Insets: central atrium (left)
+    and escalator area (right). The global map is effectively free of dynamic ghost artifacts despite dense
+    pedestrian traffic.</p>
+  </figure>
+
+  <div class="stats-band">
+    <div class="stat">
+      <div class="stat-num">24.5<span class="stat-unit">ms</span></div>
+      <div class="stat-label">global average latency per scan</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">16–31<span class="stat-unit">ms</span></div>
+      <div class="stat-label">total range across platforms &amp; scenes</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2–5<span class="stat-unit">ms</span></div>
+      <div class="stat-label">overhead of DOR + map update</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">&gt;32<span class="stat-unit">Hz</span></div>
+      <div class="stat-label">operational frequency at peak latency</div>
     </div>
   </div>
+  <figure class="figure">
+    <img src="images/processing_time.png" alt="Per-scan processing time breakdown">
+    <p class="fig-caption">Fig. 7 — Average per-scan processing time decomposed into Preprocessing,
+    State Estimation, and DOR &amp; Map Update, measured on an Intel Core i7-14700KF CPU.</p>
+  </figure>
 </section>
-<!-- End paper abstract -->
 
-
-<!-- Image carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <!-- TODO: Replace with your research result images -->
-        <img src="static/images/carousel1.jpg" alt="First research result visualization" loading="lazy"/>
-        <!-- TODO: Replace with description of this result -->
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel2.jpg" alt="Second research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <!-- Your image here -->
-        <img src="static/images/carousel3.jpg" alt="Third research result visualization" loading="lazy"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <!-- Your image here -->
-      <img src="static/images/carousel4.jpg" alt="Fourth research result visualization" loading="lazy"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section>
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- TODO: Replace with your YouTube video ID -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
-
-
-<!-- Video carousel -->
-<section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video1" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel1.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video2" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel2.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <!-- TODO: Add poster image for better preview -->
-          <video poster="" id="video3" controls muted loop height="100%" preload="metadata">
-            <!-- Your video file here -->
-            <source src="static/videos/carousel3.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End video carousel -->
-
-
-
-
-
-
-<!-- Paper poster -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
-
-      <!-- TODO: Replace with your poster PDF -->
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
-<!--End paper poster -->
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{YourPaperKey2024,
-  title={Your Paper Title Here},
-  author={First Author and Second Author and Third Author},
-  journal={Conference/Journal Name},
-  year={2024},
-  url={https://your-domain.com/your-project-page}
+<!-- ============================ CITATION ============================ -->
+<section id="citation" class="section">
+  <h2 class="section-title">Citation</h2>
+  <p class="section-sub">If you find this work useful, please cite:</p>
+  <div class="bibtex">
+    <pre><code>@article{dorlio2026,
+  title   = {DOR-LIO: A Robust and Tightly-Coupled LiDAR-Inertial Odometry
+             with Online Dynamic Object Removal},
+  author  = {Anonymous Authors},
+  journal = {Anonymous Submission},
+  year    = {2026}
 }</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
+    <button class="bibtex-copy" id="bibtex-copy">Copy BibTeX</button>
   </div>
+  <div class="ack">
+    <p><strong>Acknowledgements.</strong> We thank the authors of FAST-LIO2, FreeDOM, and the M3DGR
+    benchmark. This project page design is inspired by
+    <a href="https://se2-navmesh.github.io/" target="_blank" rel="noopener">SE(2)-NavMesh</a> and
+    <a href="https://drive-with-signs.netlify.app/" target="_blank" rel="noopener">Drive with Signs</a>.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>DOR-LIO — source code and cross-device datasets will be publicly released at
+  <a href="https://github.com/chihuaji/DOR-LIO" target="_blank" rel="noopener">github.com/chihuaji/DOR-LIO</a>.</p>
+  <p class="footer-small">© 2026 Anonymous Authors. Point cloud demos run fully in your browser (three.js).</p>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+<script src="js/vendor/three.min.js"></script>
+<script src="js/ply-loader.js"></script>
+<script src="js/orbit-controls.js"></script>
+<script src="js/cloud-viewer.js"></script>
+<script src="js/compare-viewer.js"></script>
+<script src="js/scenes.js"></script>
+<script src="js/simlab.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

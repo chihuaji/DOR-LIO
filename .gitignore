@@ -1,0 +1,7 @@
+# 仿真产物（含数百 MB rosbag，不入库）
+runs/
+# python
+__pycache__/
+*.pyc
+# 系统
+.DS_Store
