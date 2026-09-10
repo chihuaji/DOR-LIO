@@ -460,3 +460,77 @@ td.fail { color: var(--red); font-weight: 700; }
   .hero-inner { padding: 60px 20px 54px; }
   .viewer-mount { height: 380px; }
 }
+
+/* Recorded comparisons */
+.contributions-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.contribution-number { color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .1em; margin-bottom: 18px; }
+.video-showcase { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #fff; box-shadow: var(--shadow); }
+.video-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 20px; background: #f5f7fb; }
+.video-tab { font: inherit; font-size: .88rem; font-weight: 600; padding: 10px 22px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink-soft); background: #fff; cursor: pointer; transition: background .15s, color .15s; }
+.video-tab:hover { background: #eaf0ff; }
+.video-tab.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.video-tab:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.video-stage { background: #080b12; aspect-ratio: 16 / 9; }
+.video-stage video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.video-caption { padding: 18px 24px; }
+.video-caption h3 { margin: 0 0 4px; font-size: 1rem; }
+.video-caption p { margin: 0; color: var(--ink-soft); font-size: .86rem; }
+.video-error { padding: 0 24px 16px; color: var(--red); }
+.benchmark-video { margin-bottom: 32px; }
+@media (max-width: 780px) {
+  .contributions-grid { grid-template-columns: 1fr; }
+  .video-tabs { gap: 8px; padding: 14px 10px; }
+  .video-tab { padding: 9px 14px; font-size: .8rem; }
+  .video-caption { padding: 16px; }
+}
+
+/* Manuscript result tables: keyboard-scrollable on narrow screens. */
+.table-wrap caption { text-align: left; padding: 12px 14px; font-size: .8rem; color: var(--ink-soft); background: var(--bg-tint); border-bottom: 1px solid var(--line); }
+.table-wrap tbody th { text-align: left; font-weight: 600; padding: 9px 14px; border-bottom: 1px solid #eef1f5; white-space: nowrap; }
+.table-wrap tbody tr:last-child th { border-bottom: none; }
+.table-wrap:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.result-reading { color: var(--ink-soft); max-width: 900px; font-size: .92rem; margin: 20px 0 32px; }
+.stats-band .stat-num { font-size: clamp(1.2rem, 2.3vw, 2rem); }
+.dataset-details { margin: 24px 0 32px; }
+.dataset-details summary { cursor: pointer; font-weight: 600; margin-bottom: 12px; color: var(--accent); }
+
+/* One timeline, three synchronized perspectives, a scrollable keyframe rail. */
+.sync-player { padding: 18px; background: #f5f7fb; border: 1px solid var(--line); border-radius: 16px; }
+.sync-layout { display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 18px; }
+.sync-views { min-width: 0; }
+.sync-top { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.sync-view { position: relative; margin: 0; overflow: hidden; border-radius: 9px; background: #05070b; }
+.sync-view video { display: block; width: 100%; aspect-ratio: 854 / 480; object-fit: contain; }
+.sync-view figcaption { position: absolute; top: 10px; left: 10px; z-index: 1; background: rgba(10,15,26,.82); color: white; border: 1px solid #ffffff25; border-radius: 6px; padding: 3px 10px; font-size: .75rem; font-weight: 600; pointer-events: none; }
+.sync-view figcaption span { margin-left: 10px; color: #b7c5da; font-weight: 400; }
+.sync-controls { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.sync-controls button { border: 1px solid var(--line); background: white; color: var(--ink); font: inherit; font-size: .78rem; font-weight: 600; border-radius: 7px; padding: 7px 12px; cursor: pointer; }
+.sync-controls [data-sync-toggle] { background: var(--accent); color: white; border-color: var(--accent); min-width: 64px; }
+.sync-time { font-family: var(--mono); font-size: .72rem; white-space: nowrap; }
+.sync-controls input { min-width: 40px; flex: 1; accent-color: var(--accent); cursor: pointer; }
+.sync-status { font-size: .72rem; color: var(--ink-soft); margin: 9px 0 0; min-height: 1.5em; }
+.keyframes { position: relative; min-width: 0; }
+.keyframes-heading h3 { font-size: 1rem; margin: 0; }
+.keyframes-heading p { font-size: .7rem; color: var(--ink-soft); margin: 3px 0 12px; }
+.keyframe-list { position: absolute; top: 58px; bottom: 0; left: 0; right: 0; overflow-y: auto; overscroll-behavior: contain; padding: 3px 7px 3px 3px; scrollbar-width: thin; }
+.keyframe { display: block; width: 100%; text-align: left; border: 2px solid transparent; border-radius: 9px; padding: 0; margin: 0 0 12px; overflow: hidden; background: white; color: var(--ink); font: inherit; cursor: pointer; transition: border-color .15s; }
+.keyframe:hover { border-color: #9cbaf9; }
+.keyframe.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.keyframe-media { display: block; position: relative; background: #080b12; }
+.keyframe-media img { width: 100%; aspect-ratio: 16 / 9; object-fit: contain; }
+.keyframe-media > span { position: absolute; right: 7px; bottom: 6px; color: white; background: #000b; border-radius: 4px; padding: 1px 6px; font-family: var(--mono); font-size: .68rem; }
+.keyframe-copy { display: block; padding: 8px 9px; font-size: .74rem; line-height: 1.5; }
+.keyframe-copy strong { margin-right: 6px; color: var(--accent); }
+.keyframe:focus-visible, .sync-controls button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.sync-player:fullscreen { overflow: auto; background: #f5f7fb; display: grid; align-content: center; }
+.sync-player:fullscreen .sync-layout { width: min(1500px, 100%); margin: auto; }
+@media (max-width: 800px) {
+  .sync-layout { grid-template-columns: minmax(0, 1fr); }
+  .sync-player { padding: 10px; }
+  .keyframe-list { position: static; display: flex; gap: 10px; overflow-x: auto; overflow-y: hidden; }
+  .keyframe { flex: 0 0 180px; margin-bottom: 5px; }
+  .sync-controls { flex-wrap: wrap; gap: 8px; }
+  .sync-controls input { order: 4; flex-basis: 100%; }
+  .sync-controls [data-sync-fullscreen] { margin-left: auto; }
+  .sync-global figcaption span { display: none; }
+}

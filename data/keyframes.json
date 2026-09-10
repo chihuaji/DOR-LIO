@@ -1,0 +1,76 @@
+{
+  "source": "ori_vedio/同一时刻/keyframe.jpg",
+  "time_basis": "Shared video seconds; visual SIFT match on camera video sampled every 0.25 s. IDs follow the source montage; cards are sorted chronologically.",
+  "keyframes": [
+    {
+      "id": 7,
+      "time": 7.5,
+      "title": "Descending the escalator",
+      "matches": 175,
+      "image": "images/keyframes/frame-07.jpg"
+    },
+    {
+      "id": 9,
+      "time": 13.25,
+      "title": "Crowded atrium",
+      "matches": 51,
+      "image": "images/keyframes/frame-09.jpg"
+    },
+    {
+      "id": 1,
+      "time": 25.5,
+      "title": "Busy shopping corridor",
+      "matches": 133,
+      "image": "images/keyframes/frame-01.jpg"
+    },
+    {
+      "id": 2,
+      "time": 27.25,
+      "title": "Pedestrians along the route",
+      "matches": 112,
+      "image": "images/keyframes/frame-02.jpg"
+    },
+    {
+      "id": 3,
+      "time": 31.5,
+      "title": "Passing the storefronts",
+      "matches": 108,
+      "image": "images/keyframes/frame-03.jpg"
+    },
+    {
+      "id": 4,
+      "time": 35.25,
+      "title": "Open corridor junction",
+      "matches": 60,
+      "image": "images/keyframes/frame-04.jpg"
+    },
+    {
+      "id": 5,
+      "time": 41.5,
+      "title": "Continuing through the mall",
+      "matches": 108,
+      "image": "images/keyframes/frame-05.jpg"
+    },
+    {
+      "id": 6,
+      "time": 47.0,
+      "title": "Local corridor mapping",
+      "matches": 109,
+      "image": "images/keyframes/frame-06.jpg"
+    },
+    {
+      "id": 8,
+      "time": 48.5,
+      "title": "Central atrium passage",
+      "matches": 128,
+      "image": "images/keyframes/frame-08.jpg"
+    },
+    {
+      "id": 10,
+      "time": 59.25,
+      "title": "Returning through the atrium",
+      "matches": 157,
+      "image": "images/keyframes/frame-10.jpg"
+    }
+  ]
+}

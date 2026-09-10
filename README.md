@@ -11,12 +11,27 @@ Interactive components:
    handle to wipe between the raw accumulation (dynamic artifacts in red) and
    the DOR-LIO static map. The camera can be orbited while wiping; the split
    is done with two scissored render passes so it stays screen-vertical.
-3. **Live Simulation Lab** (needs the backend, below) — visitors pick
-   room size / boxes / pedestrians / seed / duration in the browser; the
-   server really runs Gazebo + DOR-LIO headlessly, then loads the resulting
-   raw-vs-clean maps into an embedded wipe slider.
+3. **Recorded Video Comparisons** — switch between four cross-platform videos,
+   watch the M3DGR benchmark, and view recorded Gazebo results. The former
+   Live Simulation Lab is disabled on the page; its backend sources are retained.
 
-## Live Simulation Lab
+## Recorded comparison videos
+
+The page now features Key Contributions, a four-button Cross-Platform Comparison
+(single player), a recorded Gazebo comparison, and an M3DGR benchmark video.
+Original MP4 files are served from `ori_vedio/`; posters live in `images/video-*.jpg`.
+The selectors are defined in `index.html` and handled by `js/video-gallery.js`.
+Videos load on demand and switching scenes pauses and resets the player.
+
+The Live Simulation Lab is disabled on the public page: neither its controls nor
+`js/simlab.js` are loaded. Backend sources remain available for later use.
+No simulation jobs are launched by these video sections.
+
+For the two future speed videos, add MP4s and posters, then reuse the
+`data-video-gallery` / `data-src` button structure in the simulation section.
+Label each speed only when its experimental setting is confirmed.
+
+## Live Simulation Lab (archived; not enabled on the page)
 
 ### 快速开始
 
@@ -99,7 +114,7 @@ dor-web/
 
 ```bash
 cd dor-web
-python3 -m http.server 8899
+python3 tools/serve.py --port 8899
 # open http://127.0.0.1:8899
 ```
 
@@ -160,8 +175,7 @@ entries — the tabs are generated automatically.
 
 - Authors / affiliations (`index.html`, hero section)
 - Paper PDF link, arXiv link
-- Video section — replace the three placeholder cards with
-  `<iframe>` (YouTube/Bilibili) or `<video src="videos/....mp4">`
+- Two additional simulation speed videos and their confirmed speed labels
 - BibTeX block in the citation section
 
 ## Tools
@@ -174,3 +188,24 @@ entries — the tabs are generated automatically.
 | `tools/preview_pcd.py` | quick matplotlib previews |
 
 Requires `numpy` (+`scipy` for diff mode).
+
+## Manuscript results
+
+Current result tables follow `DOR_LIO__ICRA_/root.tex`. The source hash and
+numerical snapshot are in `data/paper-results.json`; transcription decisions
+and source caveats are recorded in `docs/paper-data-update.md`.
+Paper figures used on the page are copied to `images/paper/`.
+
+## Synchronized keyframe tour
+
+`#highlights` presents Local + Camera above a large Global view, with ten clickable
+keyframes. `js/sync-player.js` controls muted autoplay in view, shared seeking,
+play/pause, looping, and drift correction. Keyframe IDs and approximate visual
+match timestamps are recorded in `data/keyframes.json`.
+
+Original videos stay in `ori_vedio/同一时刻/`; stream-copy web versions are in
+`videos/synchronized/`. Run `bash tools/prepare_sync_videos.sh` to regenerate
+fast-start web copies without re-encoding the video.
+
+The preview server supports HTTP Range requests for MP4 seeking. Use it instead
+of `python3 -m http.server` when checking keyframe jumps.
