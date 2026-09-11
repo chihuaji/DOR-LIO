@@ -592,5 +592,6 @@ td.fail { color: var(--red); font-weight: 700; }
 .helimos-comparison figcaption { margin-top: 12px; text-align: center; color: var(--ink-soft); font-size: .86rem; }
 
 .gazebo-overhead { max-width: 680px; margin: 24px auto 36px; }
-.gazebo-overhead img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.gazebo-overhead a { display: block; }
+.gazebo-overhead img { display: block; width: 100%; height: auto; border-radius: var(--radius); transform: rotate(90deg); }
 .gazebo-overhead figcaption { margin-top: 12px; text-align: center; color: var(--ink-soft); font-size: .86rem; }

@@ -7,7 +7,7 @@
   <meta name="description" content="DOR-LIO jointly performs tightly-coupled LiDAR-inertial state estimation and online dynamic object removal within a unified multi-resolution voxel map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=20260911-gazebo4">
+  <link rel="stylesheet" href="css/style.css?v=20260911-layout5">
   <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -24,8 +24,6 @@
       <a href="#public-datasets">Public&nbsp;Datasets</a>
       <a href="#video">Cross-Platform</a>
       <a href="#simulation">Simulation</a>
-      <a href="#our-datasets">Our&nbsp;Datasets</a>
-      <a href="#method">Method</a>
       <a href="#citation">Citation</a>
     </div>
     <a class="nav-gh" href="https://github.com/chihuaji/DOR-LIO" target="_blank" rel="noopener">
@@ -258,7 +256,7 @@
   <p class="section-sub">A dynamic Gazebo environment with pedestrians and static structures. Quantitative results across three motion speeds are reported below.</p>
   <figure class="gazebo-overhead">
     <a href="images/paper/gazebo-overhead-18m.png" target="_blank" rel="noopener" aria-label="Open full-resolution Gazebo overhead view">
-      <img src="images/paper/gazebo-overhead-18m.png" width="800" height="800" loading="lazy" alt="Overhead view of the Gazebo environment with pedestrians and four colored static structures.">
+      <img src="images/paper/gazebo-overhead-18m.png" width="800" height="800" loading="lazy" alt="Overhead view of the Gazebo environment with pedestrians and colored ICRA structures arranged from left to right.">
     </a>
     <figcaption>Dynamic Gazebo Scene · Overhead View</figcaption>
   </figure>
@@ -282,50 +280,9 @@
 <figure class="figure"><img loading="lazy" src="images/paper/image.png" alt="Gazebo scene and mapping comparison"><p class="fig-caption">Recorded qualitative evaluation in a dynamic Gazebo scene.</p></figure>
 </section>
 
-<section id="our-datasets" class="section section-tint">
-<h2 class="section-title">Results on Our Cross-Device Dataset</h2>
-<p class="section-sub">Real-world data collected with quadruped, omni-directional, humanoid, and handheld platforms, using Livox Mid-360 and Odin LiDARs.</p>
-<figure class="figure"><img loading="lazy" src="images/paper/display.png" alt="Platforms and representative maps"><p class="fig-caption">Quadruped, omni-directional UGV, humanoid, and handheld deployments.</p></figure>
-<h3 class="table-title">Self-Collected Sequences · Drift and Map Quality</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Self-collected dataset evaluation"><table><caption>Self-collected dataset evaluation</caption><thead><tr><th scope="col">Method</th><th scope="col">Mall 01 Drift (m) ↓</th><th scope="col">Mall 01 MME ↓</th><th scope="col">Mall 02 Drift (m) ↓</th><th scope="col">Mall 02 MME ↓</th><th scope="col">School 01 Drift (m) ↓</th><th scope="col">School 01 MME ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td>0.072</td><td>-3.078</td><td>0.029</td><td>-3.220</td><td>--</td><td>--</td></tr><tr><th scope="row">FAST-LIO2+FreeDOM</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr><tr><th scope="row">Dynamic-LIO</th><td>348.59</td><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>--</td><td>--</td></tr><tr><th scope="row">TRLO</th><td>10.579</td><td>0.652</td><td>6.416</td><td>1.395</td><td>--</td><td>--</td></tr><tr><th scope="row">BTSA</th><td>0.211</td><td>-1.476</td><td>0.018</td><td>-1.485</td><td>--</td><td>--</td></tr><tr><th scope="row" class="ours">DOR-LIO</th><td class="ours"><b>0.041</b></td><td class="ours"><b>-3.438</b></td><td class="ours"><b>0.004</b></td><td class="ours"><b>-3.560</b></td><td class="ours">--</td><td class="ours">--</td></tr></tbody></table></div>
-<p class="table-note">Drift = end-to-end translation error on a closed trajectory; MME = Mean Map Entropy. Lower is better for both. -- = unavailable; × marks failed / invalid results as supplied in the manuscript. School 01 results are not yet reported.</p>
-<figure class="figure"><img loading="lazy" src="images/paper/mall03.png" alt="Shopping-mall mapping results"><p class="fig-caption">Mapping in a crowded shopping mall, with views of the central atrium and escalator area.</p></figure>
-<h3 class="table-title">Processing Time</h3>
-<div class="stats-band">
-<div class="stat"><div class="stat-num">24.54<span class="stat-unit">ms</span></div><div class="stat-label">reported global mean per scan</div></div>
-<div class="stat"><div class="stat-num">16.00–30.80<span class="stat-unit">ms</span></div><div class="stat-label">reported processing-time range</div></div>
-<div class="stat"><div class="stat-num">2–5<span class="stat-unit">ms</span></div><div class="stat-label">DOR + map update</div></div>
-<div class="stat"><div class="stat-num">10<span class="stat-unit">Hz</span></div><div class="stat-label">reference LiDAR scan rate</div></div>
-</div>
-<figure class="figure"><img loading="lazy" src="images/paper/fps_modules.png" alt="Average module processing times"><p class="fig-caption">Average per-scan processing time: preprocessing, state estimation, and DOR &amp; map update. Intel Core i7-14700KF CPU; 16 GB RAM.</p></figure>
-<p class="table-note">The figure reports average module timings. These summaries do not establish tail latency or end-to-end system throughput.</p>
-</section>
 
-<section id="method" class="section">
-  <h2 class="section-title">Method Overview</h2>
-  <figure class="figure">
-    <img src="images/paper/framework.png" alt="DOR-LIO system architecture">
-    <p class="fig-caption">Fig. 2 — System architecture. The tightly-coupled pipeline consists of three
-    interconnected modules: (1) <strong>State Estimation</strong> fuses IMU and static map points via an IESKF;
-    (2) <strong>Dynamic Object Removal</strong> leverages the estimated pose to deskew scans and filter moving
-    objects through free-space estimation; (3) <strong>Map Refinement</strong> maintains and clears the static
-    voxel map. Dynamic classification is refreshed within the estimation loop; persistent map updates follow convergence.</p>
-  </figure>
-  <div class="method-figs">
-    <figure class="figure">
-      <img src="images/paper/residual_a.png" alt="FAST-LIO2 residual selection">
-      <p class="fig-caption">FAST-LIO2 matches dynamic features (white box).</p>
-    </figure>
-    <figure class="figure">
-      <img src="images/paper/residual_b.png" alt="DOR-LIO residual selection">
-      <p class="fig-caption">DOR-LIO selects only static points (purple).</p>
-    </figure>
-    <figure class="figure">
-      <img src="images/paper/fig_C.png" alt="Map clearing illustration">
-      <p class="fig-caption">Map clearing via incremental FreeSpace.</p>
-    </figure>
-  </div>
-</section>
+
+
 
 <section id="citation" class="section">
   <h2 class="section-title">Citation</h2>
