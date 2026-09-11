@@ -590,3 +590,7 @@ td.fail { color: var(--red); font-weight: 700; }
 .helimos-comparison { margin: 36px 0 24px; }
 .helimos-comparison img { display: block; width: 100%; height: auto; }
 .helimos-comparison figcaption { margin-top: 12px; text-align: center; color: var(--ink-soft); font-size: .86rem; }
+
+.gazebo-overhead { max-width: 680px; margin: 24px auto 36px; }
+.gazebo-overhead img { display: block; width: 100%; height: auto; border-radius: var(--radius); }
+.gazebo-overhead figcaption { margin-top: 12px; text-align: center; color: var(--ink-soft); font-size: .86rem; }

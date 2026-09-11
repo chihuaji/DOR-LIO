@@ -7,7 +7,7 @@
   <meta name="description" content="DOR-LIO jointly performs tightly-coupled LiDAR-inertial state estimation and online dynamic object removal within a unified multi-resolution voxel map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css?v=20260911-display3">
+  <link rel="stylesheet" href="css/style.css?v=20260911-gazebo4">
   <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -255,13 +255,13 @@
 
 <section id="simulation" class="section">
   <h2 class="section-title">Simulation Comparison</h2>
-  <p class="section-sub">Recorded Gazebo experiment with moving objects: DOR-LIO, FAST-LIO2, and Dynamic-LIO.</p>
-  <div class="video-showcase">
-    <div class="video-stage">
-      <video controls muted loop playsinline preload="metadata" poster="images/video-gazebo.jpg" src="videos/optimized/gazebo.mp4" aria-label="Gazebo simulation comparison"></video>
-    </div>
-    <div class="video-caption"><h3>Dynamic Gazebo Scene</h3><p>Two additional speed settings will be added.</p></div>
-  </div>
+  <p class="section-sub">A dynamic Gazebo environment with pedestrians and static structures. Quantitative results across three motion speeds are reported below.</p>
+  <figure class="gazebo-overhead">
+    <a href="images/paper/gazebo-overhead-18m.png" target="_blank" rel="noopener" aria-label="Open full-resolution Gazebo overhead view">
+      <img src="images/paper/gazebo-overhead-18m.png" width="800" height="800" loading="lazy" alt="Overhead view of the Gazebo environment with pedestrians and four colored static structures.">
+    </a>
+    <figcaption>Dynamic Gazebo Scene · Overhead View</figcaption>
+  </figure>
 <h3 class="table-title" id="simulation-results">Gazebo · Dynamic Removal and Map Quality</h3>
 <div class="table-wrap gazebo-table" tabindex="0" role="region" aria-label="Gazebo results across three motion speeds">
 <table><caption>Gazebo motion-speed comparison</caption>
