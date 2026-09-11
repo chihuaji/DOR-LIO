@@ -61,6 +61,14 @@
       });
       spinBtn.classList.add('is-active');
 
+      this._inView = !('IntersectionObserver' in window);
+      if ('IntersectionObserver' in window) {
+        this._visibilityObserver = new IntersectionObserver(([entry]) => {
+          this._inView = entry.isIntersecting;
+        });
+        this._visibilityObserver.observe(container);
+      }
+      this._lastRender = 0;
       this._resizeObserver = new ResizeObserver(() => this._resize());
       this._resizeObserver.observe(this._wrap);
       this._resize();
@@ -130,6 +138,10 @@
 
     _animate() {
       requestAnimationFrame(this._animate);
+      if (!this._inView || document.hidden) return;
+      const now = performance.now();
+      if (now - this._lastRender < 1000 / 30) return;
+      this._lastRender = now;
       const dt = Math.min(this._clock.getDelta(), 0.1);
       this._controls.update(dt);
       this._renderer.render(this._scene, this._camera);

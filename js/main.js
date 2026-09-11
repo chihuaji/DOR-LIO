@@ -20,6 +20,7 @@
   // ---------------- Point Cloud Explorer ----------------
   const explorerMount = document.getElementById('explorer-viewer');
   if (explorerMount && window.CloudViewer) {
+    const initializeExplorer = () => {
     const viewer = new CloudViewer(explorerMount, { pointSize: 1.6 });
     const scenes = (window.DOR_SCENES && window.DOR_SCENES.explorer) || [];
     const note = document.getElementById('explorer-note');
@@ -29,26 +30,52 @@
     };
     buildTabs(document.getElementById('explorer-tabs'), scenes, load);
     if (scenes.length) load(scenes[0]);
+    };
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((entries, observer) => {
+        if (entries.some(entry => entry.isIntersecting)) {
+          observer.disconnect();
+          initializeExplorer();
+        }
+      }, { rootMargin: '200px' }).observe(explorerMount);
+    } else initializeExplorer();
   }
 
   // ---------------- Before/After compare ----------------
   const compareMount = document.getElementById('compare-viewer');
   if (compareMount && window.CompareViewer) {
-    const cmp = new CompareViewer(compareMount, { pointSize: 1.6 });
+    const cmp = new CompareViewer(compareMount, { pointSize: 1.6, reference: 'left', preserveView: true, initialView: [0, 0.4], fitScale: 0.72 });
     const scenes = (window.DOR_SCENES && window.DOR_SCENES.compare) || [];
     const note = document.getElementById('compare-note');
+    const title = document.getElementById('compare-title');
+    const previous = document.getElementById('compare-previous');
+    const next = document.getElementById('compare-next');
+    const counter = document.getElementById('compare-page');
     let started = false;
-    const load = (s) => {
+    let page = 0;
+    const load = () => {
+      if (!scenes.length) return;
+      const s = scenes[page];
       if (note) note.textContent = s.note || '';
+      title.textContent = s.title;
+      counter.textContent = `Page ${page + 1} of ${scenes.length}`;
+      previous.disabled = page === 0;
+      next.disabled = page === scenes.length - 1;
       cmp.setLabels(s.leftLabel, s.rightLabel);
+      cmp.setLegend('Shared height colors · Display-aligned maps');
       cmp.loadPair(s.raw, s.clean);
     };
-    buildTabs(document.getElementById('compare-tabs'), scenes, load);
-    // 14 MB per pair — start loading when the section approaches the viewport
+    previous.addEventListener('click', () => {
+      if (page > 0) { page--; started = true; load(); }
+    });
+    next.addEventListener('click', () => {
+      if (page < scenes.length - 1) { page++; started = true; load(); }
+    });
+    // Load only the selected pair when the section approaches the viewport
     const start = () => {
       if (started || !scenes.length) return;
       started = true;
-      load(scenes[0]);
+      load();
     };
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((entries, obs) => {

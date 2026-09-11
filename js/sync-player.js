@@ -1,11 +1,10 @@
-/* Three views share the global video's clock and one playback intent. */
+/* Manually aligned clips: shared user controls, no runtime clock correction. */
 (function () {
   'use strict';
   const root = document.querySelector('[data-sync-player]');
   if (!root) return;
   const videos = [...root.querySelectorAll('video')];
   const master = root.querySelector('#tour-global');
-  const followers = videos.filter((v) => v !== master);
   const toggle = root.querySelector('[data-sync-toggle]');
   const slider = root.querySelector('[data-sync-seek]');
   const time = root.querySelector('[data-sync-time]');
@@ -41,15 +40,17 @@
   }
   async function start() {
     if (!wanted || !visible || document.hidden || starting || failed || pendingTime !== null) return;
-    if (videos.some((v) => v.readyState < 3 || v.seeking)) return;
+    if (videos.every((v) => !v.paused)) return;
     starting = true;
     const ticket = generation;
     try {
       await Promise.all(videos.map((v) => v.play()));
-      if (ticket !== generation || !wanted || !visible || document.hidden) {
+      if (ticket !== generation) return;
+      if (!wanted || !visible || document.hidden) {
         videos.forEach((v) => v.pause());
-      } else status.textContent = 'Synchronized playback · Muted';
+      } else status.textContent = 'Playing · Muted';
     } catch (error) {
+      if (ticket !== generation) return;
       if (error.name === 'NotAllowedError') {
         wanted = false;
         pauseAll();
@@ -74,13 +75,14 @@
     }
     pendingTime = null;
     const t = Math.max(0, Math.min(target, duration() - 0.05));
-    videos.forEach((v) => { v.currentTime = t; });
+    videos.forEach((v) => { v.playbackRate = 1; v.currentTime = t; });
     refresh();
     start();
   }
   videos.forEach((v) => {
     v.muted = true;
     v.defaultMuted = true;
+    v.loop = true;
     v.addEventListener('loadedmetadata', () => {
       if (pendingTime !== null && videos.every((p) => p.readyState >= 1)) seek(pendingTime);
       refresh();
@@ -88,10 +90,7 @@
     v.addEventListener('canplay', start);
     v.addEventListener('seeked', start);
     v.addEventListener('waiting', () => {
-      if (wanted) {
-        pauseAll();
-        status.textContent = 'Buffering synchronized views…';
-      }
+      if (wanted && visible) status.textContent = 'Loading video…';
     });
     v.addEventListener('error', () => {
       failed = true;
@@ -101,7 +100,6 @@
       refresh();
     });
   });
-  master.addEventListener('ended', () => seek(0, true));
   toggle.addEventListener('click', () => {
     wanted = !wanted;
     if (wanted) {
@@ -122,11 +120,6 @@
       else status.textContent = 'Fullscreen is unavailable in this browser.';
     } catch (_) { status.textContent = 'Fullscreen is unavailable in this browser.'; }
   });
-  // Other standalone demos may pause this group, but never individual synchronized peers.
-  document.querySelectorAll('video').forEach((v) => {
-    if (root.contains(v)) return;
-    v.addEventListener('play', () => { wanted = false; pauseAll(); refresh(); });
-  });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) pauseAll();
     else start();
@@ -139,12 +132,7 @@
     }, { threshold: 0.08 }).observe(root);
   } else { visible = true; start(); }
   setInterval(() => {
-    if (wanted && visible && !document.hidden && !master.paused && !master.seeking) {
-      followers.forEach((v) => {
-        if (!v.seeking && Math.abs(v.currentTime - master.currentTime) > 0.16) v.currentTime = master.currentTime;
-      });
-    }
-    refresh();
+    if (visible && !document.hidden) refresh();
     if (videos.some((v) => v.paused)) start();
   }, 250);
   refresh();

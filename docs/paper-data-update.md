@@ -9,7 +9,7 @@ Updated website content:
 - `tab:ape_comparison`: eight sequences, nine methods, translation APE RMSE in meters; no legacy RMSE/mean pairs.
 - `tab:datasets`: sixteen sequence entries, with original sensor labels and missing values preserved.
 - `tab:helimos_compare`: four sensors, SA/DA/HA percentages, ground-truth poses. Do not combine these point-wise scores with Gazebo voxel scores.
-- `tab:gazebo_comparison`: six methods in each of Slow/Medium/Fast; PR/RR/F1 percentages and CD/map RMSE in meters. Split into three readable tables without changing values.
+- `tab:gazebo_comparison`: six methods in each of Slow/Medium/Fast; PR/RR/F1 percentages and CD/map RMSE in meters. Displayed in one grouped table directly below the Gazebo video; all values are unchanged.
 - `tab:selfcollected_eval`: six methods, Mall 01/Mall 02/School 01 drift and MME; all School 01 entries remain `--`.
 - Runtime: 24.54 ms mean, 16.00–30.80 ms reported range, 2–5 ms DOR/map update. The average-time figure does not establish tail latency or end-to-end throughput.
 - Current manuscript figures copied into `images/paper/`: framework, residual examples, map clearing, Gazebo, platforms, mall, and module timings.
@@ -32,3 +32,25 @@ Editorial handling:
 - `data/keyframes.json` records ten timestamps and source montage IDs. Timestamps were located by SIFT matching the supplied montage against Camera at 0.25 s intervals, so they are approximate visual matches, not manually supplied timestamps. Cards use actual Camera frames at those timestamps and are displayed chronologically.
 - To adjust a keyframe, update its `data-keyframe-time` in `index.html`, its JSON entry, and corresponding thumbnail. One keyframe seeks all three views.
 - Local preview now uses `python3 tools/serve.py --port 8899`, providing MP4 `Accept-Ranges`/206 responses. This is required to seek into partially downloaded fast-start videos; Python's default static server did not provide seekable ranges in the browser check.
+
+## Page order (2026-09-11)
+
+Contributions → Inside a Dynamic Scene → Interactive Point Cloud Explorer →
+Mall 01 Point Cloud Comparison → Cross-Platform video → public dataset video and
+metrics → Gazebo video and one three-speed metric table → self-collected results →
+Method Overview → Citation. The dataset inventory follows the public metric tables.
+
+## Replacement views and paired public benchmarks (2026-09-11)
+
+The replacement Local and Camera clips come from `ori_vedio/画图/`, both 640×480
+and 77.184 s. Global remains from `ori_vedio/同一时刻/`. Camera keyframe thumbnails
+and both posters have been regenerated at the existing timestamps.
+
+The public dataset video is now a paired comparison with Dynamic01 and Dynamic03
+tabs. Each tab loads DOR-LIO on the left and FAST-LIO2 on the right. Four source
+files map to `videos/benchmarks/{dynamic01,dynamic03}-{ours,fastlio2}.mp4`:
+`dynamic01-our1`, `dynamic01-lio2`, `dynamic03-our`, and `dynamic03-fastlio2`.
+All source clips are 14.838 s. They use lossless video stream-copy with fast-start
+indexing and omit audio. The source videos are retained. A shared control bar
+keeps paired playback, seeking, looping and pause synchronized. The old single
+M3DGR video is no longer embedded; all quantitative tables are unchanged.

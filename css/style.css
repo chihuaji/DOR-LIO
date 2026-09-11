@@ -534,3 +534,55 @@ td.fail { color: var(--red); font-weight: 700; }
   .sync-controls [data-sync-fullscreen] { margin-left: auto; }
   .sync-global figcaption span { display: none; }
 }
+
+/* Paginated Mall 01 point-cloud comparisons. */
+.compare-title { color: #e5edf8; font-size: 1rem; margin: 0; padding: 16px 20px; }
+.compare-pagination { display: flex; align-items: center; justify-content: center; gap: 28px; padding: 20px 12px 24px; }
+.compare-pagination button { background: #3273dc; color: white; font: inherit; font-size: .9rem; border: none; border-radius: 4px; min-width: 108px; padding: 11px 18px; cursor: pointer; }
+.compare-pagination button:hover:not(:disabled) { background: #2366cf; }
+.compare-pagination button:disabled { opacity: .4; cursor: default; }
+.compare-pagination button:focus-visible { outline: 3px solid #9bc2ff; outline-offset: 3px; }
+.compare-pagination span { color: #e5edf8; font-size: 1rem; white-space: nowrap; }
+@media (max-width: 620px) {
+  .compare-pagination { gap: 12px; }
+  .compare-pagination button { min-width: 0; padding: 10px 12px; font-size: .78rem; }
+  .compare-pagination span { font-size: .85rem; }
+  .compare-title { font-size: .9rem; padding: 14px; }
+  .cmp-label { font-size: .65rem; max-width: 48%; }
+}
+#compare .cmp-label-left { background: #122440; border-color: #365e97; color: #b4d2ff; }
+#compare .cmp-label-right { background: #192332; border-color: #43546d; color: #d6e1f2; }
+@media (max-width: 620px) {
+  #compare .viewer-mount { height: 260px; }
+  #compare .cmp-hint { display: none; }
+  #compare .cmp-legend { font-size: .62rem; }
+}
+
+/* One manuscript-style table for the three Gazebo speed settings. */
+.gazebo-table table { min-width: 1250px; font-size: .74rem; }
+.gazebo-table thead th { text-align: center; padding: 9px 10px; }
+.gazebo-table tbody td { padding: 9px 10px; }
+.gazebo-table thead tr:first-child th:not(:first-child) { border-left: 2px solid #d6deeb; }
+.gazebo-table tbody td:nth-child(2),
+.gazebo-table tbody td:nth-child(7),
+.gazebo-table tbody td:nth-child(12) { border-left: 2px solid #d6deeb; }
+
+/* Paired public-dataset demos, matching sequence tabs to two algorithm views. */
+.benchmark-player { margin: 12px 0 34px; }
+.benchmark-heading { text-align: center; font-size: 1.8rem; margin: 0 0 24px; }
+.benchmark-tabs { background: transparent; padding: 10px 0 24px; }
+.benchmark-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.benchmark-pair figure { margin: 0; min-width: 0; }
+.benchmark-pair figcaption { text-align: center; color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 10px; }
+.benchmark-pair figure + figure figcaption { color: #e33a42; }
+.benchmark-pair video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #05070b; border: 1px solid var(--line); border-radius: 16px; }
+.benchmark-controls { max-width: 720px; margin: 18px auto 0; }
+.benchmark-player > .sync-status { text-align: center; }
+.sync-top .sync-view video { aspect-ratio: 4 / 3; }
+.keyframe-media img { aspect-ratio: 4 / 3; }
+@media (max-width: 620px) {
+  .benchmark-pair { gap: 10px; }
+  .benchmark-pair figcaption { font-size: .86rem; }
+  .benchmark-pair video { border-radius: 9px; }
+  .benchmark-heading { font-size: 1.35rem; }
+}

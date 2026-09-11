@@ -1,0 +1,162 @@
+{
+  "sequence": "Mall 01 / floor1.bag",
+  "purpose": "Qualitative browser visualization only; no metric recomputation",
+  "display_origin_in_dor_frame": [
+    22.935264587402344,
+    50.24353790283203,
+    3.200845718383789
+  ],
+  "height_color_range_in_dor_frame_m": [
+    -1.3076403141021729,
+    9.940758228302002
+  ],
+  "sampling": {
+    "pre_sample_cap": 2000000,
+    "voxel_m": 0.1,
+    "output_cap": 650000,
+    "seed": 0
+  },
+  "registration": "Rigid display alignment only. FAST-LIO2 and DUFOMap share one transform. BTSA has a separately estimated rigid transform. No scale or nonrigid correction.",
+  "maps": {
+    "ours": {
+      "source": "/home/hyd/dynamic_ws/yflio_dynamic_ws/pcd/my/longhufloor1.pcd",
+      "source_points": 1215326,
+      "source_bytes": 38890685,
+      "source_sha256": "22f060d344e5dde242e6a0cf57c17a390ec2f47bd41a7d6fcac1559043123b7b",
+      "output_points": 650000,
+      "output": "data/mall01/ours.ply",
+      "output_sha256": "9dd6ce99f5a1998136eb451c5444dae1edd52fa4ecdbc71634f56cf88f6858e9",
+      "display_transform": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "fastlio2": {
+      "source": "/home/hyd/icra-dor-ws/baseline_icra/selfcollected_runs/results/fastlio2/offline_20260911_floor1/full_map.pcd",
+      "source_points": 26865765,
+      "source_bytes": 322389327,
+      "source_sha256": "0f89875917feab8d5cb2cef0174a3ab292ea4bf3291bf0f1f7ca1796e78c24bc",
+      "output_points": 650000,
+      "output": "data/mall01/fastlio2.ply",
+      "output_sha256": "c104554bf9226537de516f16d9d3ca78021897eae1031da40774bbfce149cee1",
+      "display_transform": [
+        [
+          0.999977250101817,
+          -0.0023821437283720655,
+          0.006310679048034106,
+          -0.02829778815519802
+        ],
+        [
+          -0.0002867633119701153,
+          0.9197055572340346,
+          0.3926087183948248,
+          0.840885731270176
+        ],
+        [
+          -0.006739216986625836,
+          -0.3926015962576846,
+          0.9196839509148336,
+          -0.04190766469591915
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "btsa": {
+      "source": "/home/hyd/icra-dor-ws/baseline_icra/selfcollected_runs/results/btsa/run_20260910T100519/btsa_floor1_static_map.pcd",
+      "source_points": 80602708,
+      "source_bytes": 967232674,
+      "source_sha256": "d32ec0ae7e5efcb2674c962a0f11a08bcade3623d1be910a4df997708e7ff025",
+      "output_points": 650000,
+      "output": "data/mall01/btsa.ply",
+      "output_sha256": "ba0caa6f51f4c482eaf3e82c0f6a11da82ef3a73d1b9fa3374ce205027446d4d",
+      "display_transform": [
+        [
+          0.9999458203449919,
+          -0.010401581178825907,
+          -0.00040433100260021054,
+          0.34632595539855543
+        ],
+        [
+          0.009687691428195961,
+          0.915700042146981,
+          0.40174566761423275,
+          -0.1106037447943032
+        ],
+        [
+          -0.003808544258808771,
+          -0.4017278182065482,
+          0.9157511971434321,
+          -0.07611357917130457
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    "dufomap": {
+      "source": "/home/hyd/icra-dor-ws/baseline_icra/selfcollected_runs/results/dufomap/offline_20260911_floor1/static_map.pcd",
+      "source_points": 25515773,
+      "source_bytes": 306189454,
+      "source_sha256": "352fa0d7d3df97dd0e21b15a68b1664e07f03c86f53880b78bd484872432fcb5",
+      "output_points": 650000,
+      "output": "data/mall01/dufomap.ply",
+      "output_sha256": "5d6c334bd5ac8482a8b606ddda2d1af9d4bccb68327e84b852e663127871363b",
+      "display_transform": [
+        [
+          0.999977250101817,
+          -0.0023821437283720655,
+          0.006310679048034106,
+          -0.02829778815519802
+        ],
+        [
+          -0.0002867633119701153,
+          0.9197055572340346,
+          0.3926087183948248,
+          0.840885731270176
+        ],
+        [
+          -0.006739216986625836,
+          -0.3926015962576846,
+          0.9196839509148336,
+          -0.04190766469591915
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  }
+}

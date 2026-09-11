@@ -1,6 +1,6 @@
 {
   "source": "ori_vedio/同一时刻/keyframe.jpg",
-  "time_basis": "Shared video seconds; visual SIFT match on camera video sampled every 0.25 s. IDs follow the source montage; cards are sorted chronologically.",
+  "time_basis": "Shared video seconds; visual SIFT match on camera video sampled every 0.25 s. IDs follow the source montage; cards are sorted chronologically. Camera thumbnails refreshed from the replacement 4:3 camera clip; original 77.184 s timeline retained.",
   "keyframes": [
     {
       "id": 7,
@@ -72,5 +72,6 @@
       "matches": 157,
       "image": "images/keyframes/frame-10.jpg"
     }
-  ]
+  ],
+  "camera_source": "ori_vedio/画图/camera.mp4"
 }

@@ -53,6 +53,7 @@
       this._camera = new THREE.PerspectiveCamera(55, 1, 0.1, 20000);
       this._camera.up.set(0, 0, 1);
       this._controls = new OrbitControlsZ(this._camera, this._renderer.domElement);
+      if (this.opts.preserveView) this._controls.autoRotate = false;
 
       // handle interactions
       const handleEl = this._handle;
@@ -71,6 +72,14 @@
         if (e.key === 'ArrowRight') { this._setSplit(this._split + 0.03); e.preventDefault(); }
       });
 
+      this._inView = !('IntersectionObserver' in window);
+      if ('IntersectionObserver' in window) {
+        this._visibilityObserver = new IntersectionObserver(([entry]) => {
+          this._inView = entry.isIntersecting;
+        });
+        this._visibilityObserver.observe(container);
+      }
+      this._lastRender = 0;
       this._resizeObserver = new ResizeObserver(() => this._resize());
       this._resizeObserver.observe(this._wrap);
       this._resize();
@@ -83,6 +92,10 @@
       this._rightLabel.textContent = right;
     }
 
+    setLegend(text) {
+      this.container.querySelector('.cmp-legend').textContent = text;
+    }
+
     _setSplit(v) { this._split = Math.min(0.98, Math.max(0.02, v)); }
 
     _moveSplit(e) {
@@ -91,18 +104,31 @@
     }
 
     async loadPair(rawUrl, cleanUrl) {
+      if (this._request) this._request.abort();
+      const request = this._request = new AbortController();
       this._loading.style.display = 'flex';
+      this._loadingText.textContent = 'Loading comparison…';
+      this._loadingBar.style.background = '';
+      this._loadingBar.style.width = '4%';
+      for (const p of [this._raw, this._clean]) {
+        if (p) { this._scene.remove(p); p.geometry.dispose(); p.material.dispose(); }
+      }
+      this._raw = this._clean = null;
       try {
         const loadOne = async (url, tag) => {
           const buf = await DORPLY.fetchPLY(url, (d, t) => {
+            if (request !== this._request) return;
             const pct = t ? Math.round(d / t * 100) : 0;
             this._loadingText.textContent = `Loading ${tag}… ${pct}%`;
             this._loadingBar.style.width = Math.max(pct, 4) + '%';
-          });
+          }, { signal: request.signal });
+          if (request.signal.aborted) return null;
           return DORPLY.parsePLY(buf);
         };
-        const raw = await loadOne(rawUrl, 'raw map');
-        const clean = await loadOne(cleanUrl, 'static map');
+        const [raw, clean] = await Promise.all([
+          loadOne(rawUrl, 'left map'), loadOne(cleanUrl, 'right map')
+        ]);
+        if (request !== this._request || request.signal.aborted) return;
         const mk = (geo) => {
           const g = new THREE.BufferGeometry();
           g.setAttribute('position', new THREE.BufferAttribute(geo.positions, 3));
@@ -116,13 +142,19 @@
         this._raw = mk(raw); this._clean = mk(clean);
         this._scene.add(this._raw); this._scene.add(this._clean);
 
-        this._clean.geometry.computeBoundingBox();
-        const bb = this._clean.geometry.boundingBox;
+        const reference = this.opts.reference === 'left' ? this._raw : this._clean;
+        reference.geometry.computeBoundingBox();
+        const bb = reference.geometry.boundingBox;
         const center = bb.getCenter(new THREE.Vector3());
         const radius = bb.getSize(new THREE.Vector3()).length() / 2;
-        this._controls.fit(center, radius);
+        if (!this.opts.preserveView || !this._home) {
+          this._controls.fit(center, radius * (this.opts.fitScale || 1));
+          if (this.opts.initialView) this._controls.setView(...this.opts.initialView);
+        }
         this._home = { center: center.clone(), radius };
       } catch (err) {
+        if (request !== this._request || request.signal.aborted) return;
+        request.abort();
         this._loadingText.textContent = 'Failed to load: ' + err.message;
         this._loadingBar.style.background = '#e5503a';
         console.error(err);
@@ -141,6 +173,10 @@
 
     _animate() {
       requestAnimationFrame(this._animate);
+      if (!this._inView || document.hidden) return;
+      const now = performance.now();
+      if (now - this._lastRender < 1000 / 30) return;
+      this._lastRender = now;
       const dt = Math.min(this._clock.getDelta(), 0.1);
       this._controls.update(dt);
 

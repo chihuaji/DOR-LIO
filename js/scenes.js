@@ -20,19 +20,40 @@
       // { id: 'mall', title: 'Shopping Mall (handheld)', file: 'data/mall.ply', badges: [...] },
     ],
 
-    // Scene pairs shown in the before/after wipe slider.
+    // Mall 01: display exports only; original maps and metrics remain unchanged.
     compare: [
       {
-        id: 'campus-demo',
-        title: 'Campus — dynamic pedestrian removal',
-        raw: 'data/campus_raw_demo.ply',
-        clean: 'data/campus_clean.ply',
-        leftLabel: 'Raw accumulation',
-        rightLabel: 'DOR-LIO (Ours)',
-        note: 'Demo pair: the static geometry is a real DOR-LIO map; walking ' +
-              'pedestrians are synthesized placeholders (red) standing in for a ' +
-              'FAST-LIO2 raw export. Replace with real raw/clean pairs anytime — ' +
-              'see README.md.',
+        id: 'mall01-fastlio2',
+        title: 'Mall 01 · DOR-LIO vs FAST-LIO2',
+        raw: 'data/mall01/ours.ply',
+        clean: 'data/mall01/fastlio2.ply',
+        leftLabel: 'DOR-LIO (Ours)',
+        rightLabel: 'FAST-LIO2',
+        note: 'Mall 01 / floor1. Archived DOR-LIO map vs the September 11 FAST-LIO2 full accumulation. ' +
+              'Downsampled for display, with shared height colors and rigid display alignment. ' +
+              'Separate runs; differences include estimation and sampling effects.',
+      },
+      {
+        id: 'mall01-btsa',
+        title: 'Mall 01 · DOR-LIO vs BTSA',
+        raw: 'data/mall01/ours.ply',
+        clean: 'data/mall01/btsa.ply',
+        leftLabel: 'DOR-LIO (Ours)',
+        rightLabel: 'BTSA',
+        note: 'Mall 01 / floor1. Archived DOR-LIO map vs BTSA static output (registered points minus detected dynamic points). ' +
+              'Downsampled with shared height colors; rigidly aligned for viewing only. ' +
+              'A static-map output can still contain dynamic remnants.',
+      },
+      {
+        id: 'mall01-dufomap',
+        title: 'Mall 01 · DOR-LIO vs FAST-LIO2 + DUFOMap',
+        raw: 'data/mall01/ours.ply',
+        clean: 'data/mall01/dufomap.ply',
+        leftLabel: 'DOR-LIO (Ours)',
+        rightLabel: 'FAST-LIO2 + DUFOMap',
+        note: 'Mall 01 / floor1. DUFOMap filters the same FAST-LIO2 run shown on page 1. ' +
+              'Both use exactly the same rigid display transform. Shared height colors and display downsampling; ' +
+              'no ground-truth dynamic labels are implied.',
       },
     ],
   };

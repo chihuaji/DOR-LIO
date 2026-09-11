@@ -1,0 +1,32 @@
+[
+  {
+    "source": "ori_vedio/画图/camera.mp4",
+    "web_video": "videos/synchronized/camera.mp4",
+    "encoded_video_sha256": "283bde02343f9027b84d16716f5bccb724ef7bbf262ac31c1679c790c9e2c02e"
+  },
+  {
+    "source": "ori_vedio/画图/local.mp4",
+    "web_video": "videos/synchronized/local.mp4",
+    "encoded_video_sha256": "c7dd19f20626cce4b11fde9d87dac9017e733a3de8e5770f13359bf676edbab1"
+  },
+  {
+    "source": "ori_vedio/画图/dynamic01-our1.mp4",
+    "web_video": "videos/benchmarks/dynamic01-ours.mp4",
+    "encoded_video_sha256": "5b96a268a8216e7b40a6c80b557f702b0de051a1e6349b56af7cd98565169632"
+  },
+  {
+    "source": "ori_vedio/画图/dynamic01-lio2.mp4",
+    "web_video": "videos/benchmarks/dynamic01-fastlio2.mp4",
+    "encoded_video_sha256": "cfeea4a41a6a76b81a3862ffa22540a31f269b8e807b4b47d674ac4307a21fae"
+  },
+  {
+    "source": "ori_vedio/画图/dynamic03-our.mp4",
+    "web_video": "videos/benchmarks/dynamic03-ours.mp4",
+    "encoded_video_sha256": "d88c50de93f730cce5b07cf4b44a216a4fab619dd178d32d8bf86f5fbc900b64"
+  },
+  {
+    "source": "ori_vedio/画图/dynamic03-fastlio2.mp4",
+    "web_video": "videos/benchmarks/dynamic03-fastlio2.mp4",
+    "encoded_video_sha256": "07d2bb24698ccc45fa403bd750b6808f888af1f953d3e046bebc9e20a9236331"
+  }
+]

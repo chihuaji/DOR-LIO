@@ -6,8 +6,8 @@
 
   const HEADER_STATE = { MAGIC: 0, BODY: 1 };
 
-  async function fetchPLY(url, onProgress) {
-    const res = await fetch(url);
+  async function fetchPLY(url, onProgress, options) {
+    const res = await fetch(url, options);
     if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
     const total = Number(res.headers.get('Content-Length')) || 0;
     if (!res.body || !window.ReadableStream) return new Uint8Array(await res.arrayBuffer());

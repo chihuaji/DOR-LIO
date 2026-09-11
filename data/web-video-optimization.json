@@ -1,0 +1,77 @@
+{
+  "encoding": "H.264 CRF 23, max 1280 px width, max 2.5 Mbit/s, 1-second keyframes, original frame cadence, no audio, faststart. Lossy display copies; originals retained.",
+  "videos": [
+    {
+      "source": "ori_vedio/画图/camera.mp4",
+      "output": "videos/optimized/camera.mp4",
+      "source_bytes": 29995951,
+      "web_bytes": 16839732
+    },
+    {
+      "source": "ori_vedio/画图/local.mp4",
+      "output": "videos/optimized/local.mp4",
+      "source_bytes": 29415591,
+      "web_bytes": 23241730
+    },
+    {
+      "source": "ori_vedio/同一时刻/global.mp4",
+      "output": "videos/optimized/global.mp4",
+      "source_bytes": 20595190,
+      "web_bytes": 6246197
+    },
+    {
+      "source": "ori_vedio/画图/dynamic01-our1.mp4",
+      "output": "videos/optimized/dynamic01-ours.mp4",
+      "source_bytes": 6313175,
+      "web_bytes": 4864851
+    },
+    {
+      "source": "ori_vedio/画图/dynamic01-lio2.mp4",
+      "output": "videos/optimized/dynamic01-fastlio2.mp4",
+      "source_bytes": 6129614,
+      "web_bytes": 4860965
+    },
+    {
+      "source": "ori_vedio/画图/dynamic03-our.mp4",
+      "output": "videos/optimized/dynamic03-ours.mp4",
+      "source_bytes": 6276465,
+      "web_bytes": 4746500
+    },
+    {
+      "source": "ori_vedio/画图/dynamic03-fastlio2.mp4",
+      "output": "videos/optimized/dynamic03-fastlio2.mp4",
+      "source_bytes": 6450903,
+      "web_bytes": 4577944
+    },
+    {
+      "source": "ori_vedio/a2.mp4",
+      "output": "videos/optimized/a2.mp4",
+      "source_bytes": 15467470,
+      "web_bytes": 3864144
+    },
+    {
+      "source": "ori_vedio/dog.mp4",
+      "output": "videos/optimized/dog.mp4",
+      "source_bytes": 16677753,
+      "web_bytes": 4156422
+    },
+    {
+      "source": "ori_vedio/omnicar.mp4",
+      "output": "videos/optimized/omnicar.mp4",
+      "source_bytes": 14904520,
+      "web_bytes": 4013249
+    },
+    {
+      "source": "ori_vedio/longhu.mp4",
+      "output": "videos/optimized/longhu.mp4",
+      "source_bytes": 20762806,
+      "web_bytes": 5352747
+    },
+    {
+      "source": "ori_vedio/gazebo.mp4",
+      "output": "videos/optimized/gazebo.mp4",
+      "source_bytes": 18541862,
+      "web_bytes": 4808337
+    }
+  ]
+}

@@ -19,13 +19,13 @@
     <div class="nav-links">
       <a href="#contributions">Contributions</a>
       <a href="#highlights">Keyframes</a>
+      <a href="#explorer">Point&nbsp;Cloud</a>
+      <a href="#compare">Map&nbsp;Comparison</a>
+      <a href="#public-datasets">Public&nbsp;Datasets</a>
       <a href="#video">Cross-Platform</a>
       <a href="#simulation">Simulation</a>
-      <a href="#method">Method</a>
-      <a href="#explorer">Point&nbsp;Cloud</a>
-      <a href="#compare">Before&nbsp;/&nbsp;After</a>
-      <a href="#public-datasets">Public&nbsp;Datasets</a>
       <a href="#our-datasets">Our&nbsp;Datasets</a>
+      <a href="#method">Method</a>
       <a href="#citation">Citation</a>
     </div>
     <a class="nav-gh" href="https://github.com/chihuaji/DOR-LIO" target="_blank" rel="noopener">
@@ -60,7 +60,6 @@
 
 <main class="container">
 
-<!-- ======================== CONTRIBUTIONS ======================== -->
 <section id="contributions" class="section">
   <h2 class="section-title">Key Contributions</h2>
   <p class="section-sub">Dynamic reasoning and LiDAR–inertial estimation within one iterative pipeline.</p>
@@ -87,7 +86,6 @@
   </div>
 </section>
 
-<!-- ==================== SYNCHRONIZED KEYFRAME TOUR ==================== -->
 <section id="highlights" class="section">
   <h2 class="section-title">Inside a Dynamic Scene</h2>
   <p class="section-sub">One journey, three synchronized perspectives. Follow the local map, camera view,
@@ -97,14 +95,14 @@
       <div class="sync-views">
         <div class="sync-top">
           <figure class="sync-view"><figcaption>Local</figcaption>
-            <video id="tour-local" muted playsinline preload="metadata" poster="images/keyframes/local-poster.jpg" src="videos/synchronized/local.mp4" aria-label="Synchronized local view"></video>
+            <video id="tour-local" muted playsinline preload="metadata" poster="images/keyframes/local-poster.jpg" src="videos/optimized/local.mp4" aria-label="Synchronized local view"></video>
           </figure>
           <figure class="sync-view"><figcaption>Camera</figcaption>
-            <video id="tour-camera" muted playsinline preload="metadata" poster="images/keyframes/camera-poster.jpg" src="videos/synchronized/camera.mp4" aria-label="Synchronized camera view"></video>
+            <video id="tour-camera" muted playsinline preload="metadata" poster="images/keyframes/camera-poster.jpg" src="videos/optimized/camera.mp4" aria-label="Synchronized camera view"></video>
           </figure>
         </div>
         <figure class="sync-view sync-global"><figcaption>Global <span>Full scene reconstruction</span></figcaption>
-          <video id="tour-global" muted playsinline preload="metadata" poster="images/keyframes/global-poster.jpg" src="videos/synchronized/global.mp4" aria-label="Synchronized global map"></video>
+          <video id="tour-global" muted playsinline preload="metadata" poster="images/keyframes/global-poster.jpg" src="videos/optimized/global.mp4" aria-label="Synchronized global map"></video>
         </figure>
         <div class="sync-controls">
           <button type="button" data-sync-toggle aria-label="Play all views">Play</button>
@@ -115,7 +113,7 @@
         <p class="sync-status" data-sync-status aria-live="polite">Autoplays silently when in view.</p>
       </div>
       <aside class="keyframes" aria-label="Keyframes">
-        <div class="keyframes-heading"><h3>Keyframes</h3><p>Click to jump · All views stay in sync</p></div>
+        <div class="keyframes-heading"><h3>Keyframes</h3><p>Click to jump · Three views, one moment</p></div>
         <div class="keyframe-list">
           <button class="keyframe" type="button" data-keyframe-time="7.5" aria-controls="tour-local tour-camera tour-global" aria-label="Keyframe 7: Descending the escalator, 0:07">
             <span class="keyframe-media"><img src="images/keyframes/frame-07.jpg" alt="" loading="lazy"><span>0:07</span></span>
@@ -163,26 +161,88 @@
   </div>
 </section>
 
-<!-- ======================== CROSS-PLATFORM VIDEOS ======================== -->
+<section id="explorer" class="section section-dark">
+  <h2 class="section-title">Interactive Point Cloud Explorer</h2>
+  <p class="section-sub">A real static map reconstructed online by DOR-LIO.
+  <strong>Drag to orbit</strong>, <strong>scroll to zoom</strong>, right-drag to pan — the full map is
+  streamed to your browser.</p>
+  <div class="explorer-shell" id="explorer-root">
+    <div class="explorer-tabs" id="explorer-tabs"></div>
+    <div id="explorer-viewer" class="viewer-mount"></div>
+    <p class="scene-note" id="explorer-note"></p>
+  </div>
+</section>
+
+<section id="compare" class="section section-dark">
+  <h2 class="section-title">Mall 01 · Point Cloud Comparison</h2>
+  <p class="section-sub">Compare DOR-LIO with FAST-LIO2, BTSA, and FAST-LIO2 + DUFOMap.
+  Drag the divider to compare maps, drag elsewhere to orbit, and scroll to zoom.</p>
+  <div class="explorer-shell" id="compare-root">
+    <h3 class="compare-title" id="compare-title">DOR-LIO vs FAST-LIO2</h3>
+    <div id="compare-viewer" class="viewer-mount"></div>
+    <p class="scene-note" id="compare-note">Mall 01 / floor1 · Loading comparison…</p>
+    <nav class="compare-pagination" aria-label="Point cloud comparison pages">
+      <button type="button" id="compare-previous" disabled>❮ Previous</button>
+      <span id="compare-page" role="status" aria-live="polite">Page 1 of 3</span>
+      <button type="button" id="compare-next">Next ❯</button>
+    </nav>
+  </div>
+</section>
+
+
+
+<section id="public-datasets" class="section">
+<h2 class="section-title">Results on Public Datasets</h2>
+<p class="section-sub">Localization across eight public sequences and point-wise dynamic removal on four HeLiMOS sensors.</p>
+  <div class="benchmark-player" data-benchmark-player>
+    <h3 class="benchmark-heading">Benchmark Comparison</h3>
+    <div class="video-tabs benchmark-tabs" role="group" aria-label="Choose a public dataset sequence">
+      <button type="button" class="video-tab is-active" data-benchmark-sequence="dynamic01" aria-pressed="true" aria-controls="benchmark-ours benchmark-fastlio2">Dynamic01</button>
+      <button type="button" class="video-tab" data-benchmark-sequence="dynamic03" aria-pressed="false" aria-controls="benchmark-ours benchmark-fastlio2">Dynamic03</button>
+    </div>
+    <div class="benchmark-pair">
+      <figure><figcaption>DOR-LIO (Ours)</figcaption><video id="benchmark-ours" muted playsinline preload="metadata" poster="images/benchmarks/dynamic01-ours.jpg" src="videos/optimized/dynamic01-ours.mp4" aria-label="Dynamic01 DOR-LIO comparison"></video></figure>
+      <figure><figcaption>FAST-LIO2</figcaption><video id="benchmark-fastlio2" muted playsinline preload="metadata" poster="images/benchmarks/dynamic01-fastlio2.jpg" src="videos/optimized/dynamic01-fastlio2.mp4" aria-label="Dynamic01 FAST-LIO2 comparison"></video></figure>
+    </div>
+    <div class="sync-controls benchmark-controls">
+      <button type="button" data-benchmark-toggle aria-label="Pause both benchmark videos">Pause</button>
+      <span class="sync-time" data-benchmark-time>0:00 / 0:14</span>
+      <input type="range" data-benchmark-seek aria-label="Seek both benchmark videos" min="0" max="14.8" step="0.01" value="0">
+    </div>
+    <p class="sync-status" data-benchmark-status aria-live="polite">Autoplays silently when in view.</p>
+  </div>
+
+<h3 class="table-title">Localization · Translation APE RMSE (m) ↓</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Translation APE RMSE on public datasets"><table><caption>Translation APE RMSE on public datasets</caption><thead><tr><th scope="col">Sequence</th><th scope="col">A-LOAM</th><th scope="col">LIO-SAM</th><th scope="col">Dynamic-LIO</th><th scope="col">VoxelMap</th><th scope="col">FAST-LIO2</th><th scope="col">BTSA</th><th scope="col">TRLO</th><th scope="col">LIMOT</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">M1 · Dynamic01</th><td>0.171</td><td>0.140</td><td>0.140</td><td>0.625</td><td>0.143</td><td>0.142</td><td>0.981</td><td>3.468</td><td class="ours"><b>0.138</b></td></tr><tr><th scope="row">M2 · Dynamic02</th><td>0.147</td><td>0.136</td><td>0.149</td><td><b>0.127</b></td><td>0.138</td><td>--</td><td>--</td><td>--</td><td class="ours">0.136</td></tr><tr><th scope="row">M3 · MountainTopPark01</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>0.79</td><td>0.80</td><td>--</td><td class="ours"><b>0.64</b></td></tr><tr><th scope="row">M4 · MountainTopPark02</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td><b>1.83</b></td><td>1.91</td><td>--</td><td class="ours">1.89</td></tr><tr><th scope="row">P1 · Promenade01</th><td>--</td><td>2.06</td><td>--</td><td>1.55</td><td>2.15</td><td>3.65</td><td>3.37</td><td><b>1.30</b></td><td class="ours">2.06</td></tr><tr><th scope="row">P2 · Promenade02</th><td>--</td><td>0.47</td><td>--</td><td class="fail">×</td><td class="fail">×</td><td>0.64</td><td>0.54</td><td><b>0.18</b></td><td class="ours">0.37</td></tr><tr><th scope="row">U1 · UrbanNav-HK-Data20190428</th><td>--</td><td>--</td><td>4.18</td><td>--</td><td>4.11</td><td><b>3.43</b></td><td>11.96</td><td>--</td><td class="ours">--</td></tr><tr><th scope="row">U2 · UrbanNav-HK-Data20200314</th><td>--</td><td>--</td><td>1.91</td><td>--</td><td>1.13</td><td><b>0.91</b></td><td>0.94</td><td>--</td><td class="ours">--</td></tr></tbody></table></div>
+<p class="table-note">Lower is better. Bold marks the lowest available RMSE per sequence. -- = unavailable or inapplicable; × = trajectory divergence. BTSA and corresponding baseline results are quoted from the BTSA paper, as specified in the manuscript.</p>
+<p class="result-reading">DOR-LIO reports 0.64 m on MountainTopPark01 and 0.37 m on Promenade02. Localization remains competitive across the reported sequences, with different methods leading on different scenes.</p>
+<h3 class="table-title">HeLiMOS · Point-wise Dynamic Removal (%) ↑</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="HeLiMOS point-wise removal with ground-truth poses"><table><caption>HeLiMOS point-wise removal with ground-truth poses</caption><thead><tr><th scope="col">Sensor</th><th scope="col">Metric</th><th scope="col">BeautyMap</th><th scope="col">DUFOMap</th><th scope="col">ERASOR</th><th scope="col">Dynablox</th><th scope="col">BTSA</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">Aeva</th><th scope="row">SA</th><td>69.34</td><td>91.93</td><td><b>99.21</b></td><td>97.64</td><td>91.50</td><td class="ours">63.92</td></tr><tr><th scope="row">Aeva</th><th scope="row">DA</th><td>79.98</td><td>79.33</td><td>44.56</td><td>64.78</td><td>77.77</td><td class="ours"><b>90.49</b></td></tr><tr><th scope="row">Aeva</th><th scope="row">HA</th><td>74.12</td><td><b>84.57</b></td><td>59.96</td><td>75.81</td><td>82.50</td><td class="ours">74.83</td></tr><tr><th scope="row">Avia</th><th scope="row">SA</th><td>79.77</td><td>96.30</td><td><b>99.35</b></td><td>95.21</td><td>93.66</td><td class="ours">71.56</td></tr><tr><th scope="row">Avia</th><th scope="row">DA</th><td>85.30</td><td>72.33</td><td>36.15</td><td>59.54</td><td>67.64</td><td class="ours"><b>91.25</b></td></tr><tr><th scope="row">Avia</th><th scope="row">HA</th><td><b>81.51</b></td><td>80.43</td><td>50.60</td><td>69.42</td><td>75.87</td><td class="ours">79.98</td></tr><tr><th scope="row">Ouster</th><th scope="row">SA</th><td>92.24</td><td>90.06</td><td><b>99.54</b></td><td>97.02</td><td>95.46</td><td class="ours">62.64</td></tr><tr><th scope="row">Ouster</th><th scope="row">DA</th><td>86.72</td><td>90.23</td><td>54.36</td><td>71.68</td><td>72.07</td><td class="ours"><b>96.16</b></td></tr><tr><th scope="row">Ouster</th><th scope="row">HA</th><td>89.27</td><td><b>89.99</b></td><td>69.56</td><td>82.09</td><td>81.80</td><td class="ours">75.83</td></tr><tr><th scope="row">Velodyne</th><th scope="row">SA</th><td>76.62</td><td>85.18</td><td><b>99.84</b></td><td>97.62</td><td>74.15</td><td class="ours">76.84</td></tr><tr><th scope="row">Velodyne</th><th scope="row">DA</th><td>84.73</td><td>13.12</td><td>7.90</td><td>31.87</td><td>48.93</td><td class="ours"><b>87.27</b></td></tr><tr><th scope="row">Velodyne</th><th scope="row">HA</th><td>80.10</td><td>21.58</td><td>14.06</td><td>47.33</td><td>57.79</td><td class="ours"><b>81.66</b></td></tr></tbody></table></div>
+<p class="table-note">SA = static-point recall; DA = dynamic-point recall; HA = harmonic mean. All methods use ground-truth poses. Values are reported as supplied in the manuscript; HA is not recomputed from the displayed aggregate SA/DA. BeautyMap, DUFOMap, Dynablox, and BTSA are quoted from BTSA. The ERASOR source is not specified in the table note.</p>
+<p class="table-note">Bold marks the highest available value per row.</p>
+<p class="result-reading">DOR-LIO reaches 96.16% dynamic recall on Ouster and 81.66% HA on Velodyne. Lower static preservation on Aeva and Ouster exposes a trade-off between dynamic rejection and retaining static geometry.</p>
+<details class="dataset-details"><summary>Dataset and sequence overview</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Dataset inventory"><table><caption>Sequences listed in the manuscript dataset overview</caption><thead><tr><th scope="col">ID</th><th scope="col">Sequence</th><th scope="col">Length</th><th scope="col">Duration</th><th scope="col">LiDAR</th></tr></thead><tbody><tr><td>M1</td><td>Dynamic01</td><td>73m</td><td>175 s</td><td>MID360</td></tr><tr><td>M2</td><td>Dynamic02</td><td>--</td><td>150 s</td><td>Avia</td></tr><tr><td>M3</td><td>MountainTopPark01</td><td>--</td><td>289 s</td><td>MID360</td></tr><tr><td>M4</td><td>MountainTopPark02</td><td>--</td><td>270 s</td><td>MID360</td></tr><tr><td>P1</td><td>Promenade01</td><td>--</td><td>278 s</td><td>MID360</td></tr><tr><td>P2</td><td>Promenade02</td><td>--</td><td>195 s</td><td>MID360</td></tr><tr><td>U1</td><td>UrbanNav-HK-Data20190428</td><td>--</td><td>487 s</td><td>Ved</td></tr><tr><td>U2</td><td>UrbanNav-HK-Data20200314</td><td>--</td><td>300 s</td><td>ved</td></tr><tr><td>G1</td><td>Gazebo Seq. 01</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>G2</td><td>Gazebo Seq. 02</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>G3</td><td>Gazebo Seq. 03</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>Q1</td><td>Quadruped Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>O1</td><td>Omni-UGV Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>H1</td><td>Humanoid Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>S1</td><td>Shopping Mall Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>S2</td><td>Shopping Mall Seq. 02</td><td>--</td><td>--</td><td>ODIN</td></tr></tbody></table></div><p class="table-note">-- = not specified. Sensor names and sequence identifiers follow the manuscript.</p></details>
+</section>
+
 <section id="video" class="section">
   <h2 class="section-title">Cross-Platform Comparison</h2>
   <p class="section-sub">Explore dynamic removal and mapping across four platforms.
   Select a scene to watch the recorded comparison.</p>
   <div class="video-showcase" data-video-gallery>
     <div class="video-tabs" role="group" aria-label="Choose a platform">
-      <button type="button" class="video-tab is-active" aria-pressed="true" data-src="ori_vedio/a2.mp4" data-poster="images/video-a2.jpg" data-title="Humanoid" data-description="Humanoid 01 · DOR-LIO and FAST-LIO2">Humanoid</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="ori_vedio/dog.mp4" data-poster="images/video-dog.jpg" data-title="Quadruped" data-description="Stair sequences · DOR-LIO and FAST-LIO2">Quadruped</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="ori_vedio/omnicar.mp4" data-poster="images/video-omnicar.jpg" data-title="Omni-directional UGV" data-description="Omni-directional platform · DOR-LIO and FAST-LIO2">Omni-UGV</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="ori_vedio/longhu.mp4" data-poster="images/video-longhu.jpg" data-title="Handheld · Shopping Mall" data-description="Shopping mall 02 · DOR-LIO, FAST-LIO2, and Dynamic-LIO">Handheld / Mall</button>
+      <button type="button" class="video-tab is-active" aria-pressed="true" data-src="videos/optimized/a2.mp4" data-poster="images/video-a2.jpg" data-title="Humanoid" data-description="Humanoid 01 · DOR-LIO and FAST-LIO2">Humanoid</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/optimized/dog.mp4" data-poster="images/video-dog.jpg" data-title="Quadruped" data-description="Stair sequences · DOR-LIO and FAST-LIO2">Quadruped</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/optimized/omnicar.mp4" data-poster="images/video-omnicar.jpg" data-title="Omni-directional UGV" data-description="Omni-directional platform · DOR-LIO and FAST-LIO2">Omni-UGV</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/optimized/longhu.mp4" data-poster="images/video-longhu.jpg" data-title="Handheld · Shopping Mall" data-description="Shopping mall 02 · DOR-LIO, FAST-LIO2, and Dynamic-LIO">Handheld / Mall</button>
     </div>
     <div class="video-stage">
-      <video id="cross-platform-player" controls playsinline preload="none" poster="images/video-a2.jpg" src="ori_vedio/a2.mp4" aria-label="Humanoid comparison video"></video>
+      <video id="cross-platform-player" controls muted loop playsinline preload="metadata" poster="images/video-a2.jpg" src="videos/optimized/a2.mp4" aria-label="Humanoid comparison video"></video>
     </div>
     <div class="video-caption" aria-live="polite">
       <h3 data-video-title>Humanoid</h3>
       <p data-video-description>Humanoid 01 · DOR-LIO and FAST-LIO2</p>
     </div>
-    <p class="video-error" hidden>Unable to play this video. <a href="ori_vedio/a2.mp4" data-video-download>Open the MP4 directly</a>.</p>
+    <p class="video-error" hidden>Unable to play this video. <a href="videos/optimized/a2.mp4" data-video-download>Open the MP4 directly</a>.</p>
   </div>
 </section>
 
@@ -191,13 +251,49 @@
   <p class="section-sub">Recorded Gazebo experiment with moving objects: DOR-LIO, FAST-LIO2, and Dynamic-LIO.</p>
   <div class="video-showcase">
     <div class="video-stage">
-      <video controls playsinline preload="none" poster="images/video-gazebo.jpg" src="ori_vedio/gazebo.mp4" aria-label="Gazebo simulation comparison"></video>
+      <video controls muted loop playsinline preload="metadata" poster="images/video-gazebo.jpg" src="videos/optimized/gazebo.mp4" aria-label="Gazebo simulation comparison"></video>
     </div>
     <div class="video-caption"><h3>Dynamic Gazebo Scene</h3><p>Two additional speed settings will be added.</p></div>
   </div>
+<h3 class="table-title" id="simulation-results">Gazebo · Dynamic Removal and Map Quality</h3>
+<div class="table-wrap gazebo-table" tabindex="0" role="region" aria-label="Gazebo results across three motion speeds">
+<table><caption>Gazebo motion-speed comparison</caption>
+<thead>
+<tr><th rowspan="3" scope="col">Method</th><th colspan="5" scope="colgroup">Gazebo Seq. 01 · Slow</th><th colspan="5" scope="colgroup">Gazebo Seq. 02 · Medium</th><th colspan="5" scope="colgroup">Gazebo Seq. 03 · Fast</th></tr>
+<tr><th colspan="3" scope="colgroup">DOR (%) ↑</th><th colspan="2" scope="colgroup">Map Quality (m) ↓</th><th colspan="3" scope="colgroup">DOR (%) ↑</th><th colspan="2" scope="colgroup">Map Quality (m) ↓</th><th colspan="3" scope="colgroup">DOR (%) ↑</th><th colspan="2" scope="colgroup">Map Quality (m) ↓</th></tr>
+<tr><th scope="col">PR ↑</th><th scope="col">RR ↑</th><th scope="col">F1 ↑</th><th scope="col">CD ↓</th><th scope="col">RMSE ↓</th><th scope="col">PR ↑</th><th scope="col">RR ↑</th><th scope="col">F1 ↑</th><th scope="col">CD ↓</th><th scope="col">RMSE ↓</th><th scope="col">PR ↑</th><th scope="col">RR ↑</th><th scope="col">F1 ↑</th><th scope="col">CD ↓</th><th scope="col">RMSE ↓</th></tr>
+</thead><tbody>
+<tr><th scope="row">FAST-LIO2</th><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.291</td><td>0.516</td><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.312</td><td>0.523</td><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.297</td><td>0.509</td></tr>
+<tr><th scope="row">FAST-LIO2 + Removert</th><td>66.799</td><td>80.143</td><td>72.865</td><td>0.586</td><td>0.690</td><td>58.952</td><td>78.978</td><td>67.511</td><td>0.572</td><td>0.659</td><td>58.722</td><td>80.137</td><td>67.778</td><td>0.581</td><td>0.668</td></tr>
+<tr><th scope="row">FAST-LIO2 + FreeDOM</th><td>95.906</td><td><b>96.833</b></td><td>96.367</td><td>0.110</td><td><b>0.219</b></td><td>74.647</td><td>80.561</td><td>77.491</td><td>0.158</td><td><b>0.203</b></td><td>76.981</td><td>82.714</td><td>79.745</td><td>0.156</td><td><b>0.208</b></td></tr>
+<tr><th scope="row">Dynamic-LIO</th><td>54.299</td><td>36.836</td><td>43.894</td><td>0.791</td><td>0.935</td><td>52.042</td><td>36.141</td><td>42.657</td><td>0.810</td><td>0.948</td><td>49.554</td><td>34.571</td><td>40.728</td><td>0.832</td><td>0.955</td></tr>
+<tr><th scope="row">BTSA</th><td>--</td><td>--</td><td>--</td><td>0.649</td><td>0.870</td><td>--</td><td>--</td><td>--</td><td>0.172</td><td>0.369</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr>
+<tr><th scope="row" class="ours">DOR-LIO (Ours)</th><td class="ours"><b>96.392</b></td><td class="ours">96.748</td><td class="ours"><b>96.570</b></td><td class="ours"><b>0.093</b></td><td class="ours">0.287</td><td class="ours"><b>96.792</b></td><td class="ours"><b>96.722</b></td><td class="ours"><b>96.757</b></td><td class="ours"><b>0.097</b></td><td class="ours">0.284</td><td class="ours"><b>96.590</b></td><td class="ours"><b>96.736</b></td><td class="ours"><b>96.663</b></td><td class="ours"><b>0.101</b></td><td class="ours">0.273</td></tr>
+</tbody></table></div>
+<p class="table-note">PR = voxel-wise static preservation; RR = voxel-wise dynamic rejection; F1 = their harmonic mean. CD = Chamfer distance. CD and map RMSE use the static ground-truth map. -- = unavailable. × is retained from the manuscript for FAST-LIO2 DOR cells; these cells do not report removal scores. Bold marks the best available value per column.</p>
+<p class="result-reading">DOR-LIO records F1 values of 96.570%, 96.757%, and 96.663% across the tested speeds and the lowest CD in each setting. FAST-LIO2 + FreeDOM has the lowest map RMSE in all three settings.</p>
+<figure class="figure"><img loading="lazy" src="images/paper/image.png" alt="Gazebo scene and mapping comparison"><p class="fig-caption">Recorded qualitative evaluation in a dynamic Gazebo scene.</p></figure>
 </section>
 
-<!-- ============================ METHOD ============================ -->
+<section id="our-datasets" class="section section-tint">
+<h2 class="section-title">Results on Our Cross-Device Dataset</h2>
+<p class="section-sub">Real-world data collected with quadruped, omni-directional, humanoid, and handheld platforms, using Livox Mid-360 and Odin LiDARs.</p>
+<figure class="figure"><img loading="lazy" src="images/paper/display.png" alt="Platforms and representative maps"><p class="fig-caption">Quadruped, omni-directional UGV, humanoid, and handheld deployments.</p></figure>
+<h3 class="table-title">Self-Collected Sequences · Drift and Map Quality</h3>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Self-collected dataset evaluation"><table><caption>Self-collected dataset evaluation</caption><thead><tr><th scope="col">Method</th><th scope="col">Mall 01 Drift (m) ↓</th><th scope="col">Mall 01 MME ↓</th><th scope="col">Mall 02 Drift (m) ↓</th><th scope="col">Mall 02 MME ↓</th><th scope="col">School 01 Drift (m) ↓</th><th scope="col">School 01 MME ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td>0.072</td><td>-3.078</td><td>0.029</td><td>-3.220</td><td>--</td><td>--</td></tr><tr><th scope="row">FAST-LIO2+FreeDOM</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr><tr><th scope="row">Dynamic-LIO</th><td>348.59</td><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>--</td><td>--</td></tr><tr><th scope="row">TRLO</th><td>10.579</td><td>0.652</td><td>6.416</td><td>1.395</td><td>--</td><td>--</td></tr><tr><th scope="row">BTSA</th><td>0.211</td><td>-1.476</td><td>0.018</td><td>-1.485</td><td>--</td><td>--</td></tr><tr><th scope="row" class="ours">DOR-LIO</th><td class="ours"><b>0.041</b></td><td class="ours"><b>-3.438</b></td><td class="ours"><b>0.004</b></td><td class="ours"><b>-3.560</b></td><td class="ours">--</td><td class="ours">--</td></tr></tbody></table></div>
+<p class="table-note">Drift = end-to-end translation error on a closed trajectory; MME = Mean Map Entropy. Lower is better for both. -- = unavailable; × marks failed / invalid results as supplied in the manuscript. School 01 results are not yet reported.</p>
+<figure class="figure"><img loading="lazy" src="images/paper/mall03.png" alt="Shopping-mall mapping results"><p class="fig-caption">Mapping in a crowded shopping mall, with views of the central atrium and escalator area.</p></figure>
+<h3 class="table-title">Processing Time</h3>
+<div class="stats-band">
+<div class="stat"><div class="stat-num">24.54<span class="stat-unit">ms</span></div><div class="stat-label">reported global mean per scan</div></div>
+<div class="stat"><div class="stat-num">16.00–30.80<span class="stat-unit">ms</span></div><div class="stat-label">reported processing-time range</div></div>
+<div class="stat"><div class="stat-num">2–5<span class="stat-unit">ms</span></div><div class="stat-label">DOR + map update</div></div>
+<div class="stat"><div class="stat-num">10<span class="stat-unit">Hz</span></div><div class="stat-label">reference LiDAR scan rate</div></div>
+</div>
+<figure class="figure"><img loading="lazy" src="images/paper/fps_modules.png" alt="Average module processing times"><p class="fig-caption">Average per-scan processing time: preprocessing, state estimation, and DOR &amp; map update. Intel Core i7-14700KF CPU; 16 GB RAM.</p></figure>
+<p class="table-note">The figure reports average module timings. These summaries do not establish tail latency or end-to-end system throughput.</p>
+</section>
+
 <section id="method" class="section">
   <h2 class="section-title">Method Overview</h2>
   <figure class="figure">
@@ -224,88 +320,6 @@
   </div>
 </section>
 
-<!-- ==================== INTERACTIVE EXPLORER ==================== -->
-<section id="explorer" class="section section-dark">
-  <h2 class="section-title">Interactive Point Cloud Explorer</h2>
-  <p class="section-sub">A real static map reconstructed online by DOR-LIO.
-  <strong>Drag to orbit</strong>, <strong>scroll to zoom</strong>, right-drag to pan — the full map is
-  streamed to your browser.</p>
-  <div class="explorer-shell" id="explorer-root">
-    <div class="explorer-tabs" id="explorer-tabs"></div>
-    <div id="explorer-viewer" class="viewer-mount"></div>
-    <p class="scene-note" id="explorer-note"></p>
-  </div>
-</section>
-
-<!-- ==================== BEFORE / AFTER WIPE ==================== -->
-<section id="compare" class="section section-dark">
-  <h2 class="section-title">Before / After Dynamic Removal</h2>
-  <p class="section-sub">Drag the vertical handle to wipe between the raw accumulation
-  (with dynamic artifacts, <span class="red-inline">red</span>) and the clean static map produced by
-  DOR-LIO. The camera can be orbited while wiping.</p>
-  <div class="explorer-shell" id="compare-root">
-    <div class="explorer-tabs" id="compare-tabs"></div>
-    <div id="compare-viewer" class="viewer-mount"></div>
-    <p class="scene-note" id="compare-note"></p>
-  </div>
-</section>
-
-<!-- ==================== PUBLIC DATASETS ==================== -->
-<section id="public-datasets" class="section">
-<h2 class="section-title">Results on Public Datasets</h2>
-<p class="section-sub">Localization across eight public sequences and point-wise dynamic removal on four HeLiMOS sensors.</p>
-  <div class="video-showcase benchmark-video">
-    <div class="video-stage">
-      <video controls playsinline preload="none" poster="images/video-M3DGR.jpg" src="ori_vedio/M3DGR.mp4" aria-label="M3DGR benchmark comparison"></video>
-    </div>
-    <div class="video-caption"><h3>M3DGR Benchmark</h3><p>Recorded comparison of DOR-LIO and FAST-LIO2.</p></div>
-  </div>
-
-<details class="dataset-details"><summary>Dataset and sequence overview</summary><div class="table-wrap" tabindex="0" role="region" aria-label="Dataset inventory"><table><caption>Sequences listed in the manuscript dataset overview</caption><thead><tr><th scope="col">ID</th><th scope="col">Sequence</th><th scope="col">Length</th><th scope="col">Duration</th><th scope="col">LiDAR</th></tr></thead><tbody><tr><td>M1</td><td>Dynamic01</td><td>73m</td><td>175 s</td><td>MID360</td></tr><tr><td>M2</td><td>Dynamic02</td><td>--</td><td>150 s</td><td>Avia</td></tr><tr><td>M3</td><td>MountainTopPark01</td><td>--</td><td>289 s</td><td>MID360</td></tr><tr><td>M4</td><td>MountainTopPark02</td><td>--</td><td>270 s</td><td>MID360</td></tr><tr><td>P1</td><td>Promenade01</td><td>--</td><td>278 s</td><td>MID360</td></tr><tr><td>P2</td><td>Promenade02</td><td>--</td><td>195 s</td><td>MID360</td></tr><tr><td>U1</td><td>UrbanNav-HK-Data20190428</td><td>--</td><td>487 s</td><td>Ved</td></tr><tr><td>U2</td><td>UrbanNav-HK-Data20200314</td><td>--</td><td>300 s</td><td>ved</td></tr><tr><td>G1</td><td>Gazebo Seq. 01</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>G2</td><td>Gazebo Seq. 02</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>G3</td><td>Gazebo Seq. 03</td><td>--</td><td>--</td><td>Sim. LiDAR</td></tr><tr><td>Q1</td><td>Quadruped Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>O1</td><td>Omni-UGV Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>H1</td><td>Humanoid Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>S1</td><td>Shopping Mall Seq. 01</td><td>--</td><td>--</td><td>MID360</td></tr><tr><td>S2</td><td>Shopping Mall Seq. 02</td><td>--</td><td>--</td><td>ODIN</td></tr></tbody></table></div><p class="table-note">-- = not specified. Sensor names and sequence identifiers follow the manuscript.</p></details>
-<h3 class="table-title">Localization · Translation APE RMSE (m) ↓</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Translation APE RMSE on public datasets"><table><caption>Translation APE RMSE on public datasets</caption><thead><tr><th scope="col">Sequence</th><th scope="col">A-LOAM</th><th scope="col">LIO-SAM</th><th scope="col">Dynamic-LIO</th><th scope="col">VoxelMap</th><th scope="col">FAST-LIO2</th><th scope="col">BTSA</th><th scope="col">TRLO</th><th scope="col">LIMOT</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">M1 · Dynamic01</th><td>0.171</td><td>0.140</td><td>0.140</td><td>0.625</td><td>0.143</td><td>0.142</td><td>0.981</td><td>3.468</td><td class="ours"><b>0.138</b></td></tr><tr><th scope="row">M2 · Dynamic02</th><td>0.147</td><td>0.136</td><td>0.149</td><td><b>0.127</b></td><td>0.138</td><td>--</td><td>--</td><td>--</td><td class="ours">0.136</td></tr><tr><th scope="row">M3 · MountainTopPark01</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>0.79</td><td>0.80</td><td>--</td><td class="ours"><b>0.64</b></td></tr><tr><th scope="row">M4 · MountainTopPark02</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td><b>1.83</b></td><td>1.91</td><td>--</td><td class="ours">1.89</td></tr><tr><th scope="row">P1 · Promenade01</th><td>--</td><td>2.06</td><td>--</td><td>1.55</td><td>2.15</td><td>3.65</td><td>3.37</td><td><b>1.30</b></td><td class="ours">2.06</td></tr><tr><th scope="row">P2 · Promenade02</th><td>--</td><td>0.47</td><td>--</td><td class="fail">×</td><td class="fail">×</td><td>0.64</td><td>0.54</td><td><b>0.18</b></td><td class="ours">0.37</td></tr><tr><th scope="row">U1 · UrbanNav-HK-Data20190428</th><td>--</td><td>--</td><td>4.18</td><td>--</td><td>4.11</td><td><b>3.43</b></td><td>11.96</td><td>--</td><td class="ours">--</td></tr><tr><th scope="row">U2 · UrbanNav-HK-Data20200314</th><td>--</td><td>--</td><td>1.91</td><td>--</td><td>1.13</td><td><b>0.91</b></td><td>0.94</td><td>--</td><td class="ours">--</td></tr></tbody></table></div>
-<p class="table-note">Lower is better. Bold marks the lowest available RMSE per sequence. -- = unavailable or inapplicable; × = trajectory divergence. BTSA and corresponding baseline results are quoted from the BTSA paper, as specified in the manuscript.</p>
-<p class="result-reading">DOR-LIO reports 0.64 m on MountainTopPark01 and 0.37 m on Promenade02. Localization remains competitive across the reported sequences, with different methods leading on different scenes.</p>
-<h3 class="table-title">HeLiMOS · Point-wise Dynamic Removal (%) ↑</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="HeLiMOS point-wise removal with ground-truth poses"><table><caption>HeLiMOS point-wise removal with ground-truth poses</caption><thead><tr><th scope="col">Sensor</th><th scope="col">Metric</th><th scope="col">BeautyMap</th><th scope="col">DUFOMap</th><th scope="col">ERASOR</th><th scope="col">Dynablox</th><th scope="col">BTSA</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">Aeva</th><th scope="row">SA</th><td>69.34</td><td>91.93</td><td><b>99.21</b></td><td>97.64</td><td>91.50</td><td class="ours">63.92</td></tr><tr><th scope="row">Aeva</th><th scope="row">DA</th><td>79.98</td><td>79.33</td><td>44.56</td><td>64.78</td><td>77.77</td><td class="ours"><b>90.49</b></td></tr><tr><th scope="row">Aeva</th><th scope="row">HA</th><td>74.12</td><td><b>84.57</b></td><td>59.96</td><td>75.81</td><td>82.50</td><td class="ours">74.83</td></tr><tr><th scope="row">Avia</th><th scope="row">SA</th><td>79.77</td><td>96.30</td><td><b>99.35</b></td><td>95.21</td><td>93.66</td><td class="ours">71.56</td></tr><tr><th scope="row">Avia</th><th scope="row">DA</th><td>85.30</td><td>72.33</td><td>36.15</td><td>59.54</td><td>67.64</td><td class="ours"><b>91.25</b></td></tr><tr><th scope="row">Avia</th><th scope="row">HA</th><td><b>81.51</b></td><td>80.43</td><td>50.60</td><td>69.42</td><td>75.87</td><td class="ours">79.98</td></tr><tr><th scope="row">Ouster</th><th scope="row">SA</th><td>92.24</td><td>90.06</td><td><b>99.54</b></td><td>97.02</td><td>95.46</td><td class="ours">62.64</td></tr><tr><th scope="row">Ouster</th><th scope="row">DA</th><td>86.72</td><td>90.23</td><td>54.36</td><td>71.68</td><td>72.07</td><td class="ours"><b>96.16</b></td></tr><tr><th scope="row">Ouster</th><th scope="row">HA</th><td>89.27</td><td><b>89.99</b></td><td>69.56</td><td>82.09</td><td>81.80</td><td class="ours">75.83</td></tr><tr><th scope="row">Velodyne</th><th scope="row">SA</th><td>76.62</td><td>85.18</td><td><b>99.84</b></td><td>97.62</td><td>74.15</td><td class="ours">76.84</td></tr><tr><th scope="row">Velodyne</th><th scope="row">DA</th><td>84.73</td><td>13.12</td><td>7.90</td><td>31.87</td><td>48.93</td><td class="ours"><b>87.27</b></td></tr><tr><th scope="row">Velodyne</th><th scope="row">HA</th><td>80.10</td><td>21.58</td><td>14.06</td><td>47.33</td><td>57.79</td><td class="ours"><b>81.66</b></td></tr></tbody></table></div>
-<p class="table-note">SA = static-point recall; DA = dynamic-point recall; HA = harmonic mean. All methods use ground-truth poses. Values are reported as supplied in the manuscript; HA is not recomputed from the displayed aggregate SA/DA. BeautyMap, DUFOMap, Dynablox, and BTSA are quoted from BTSA. The ERASOR source is not specified in the table note.</p>
-<p class="table-note">Bold marks the highest available value per row.</p>
-<p class="result-reading">DOR-LIO reaches 96.16% dynamic recall on Ouster and 81.66% HA on Velodyne. Lower static preservation on Aeva and Ouster exposes a trade-off between dynamic rejection and retaining static geometry.</p>
-</section>
-<section id="simulation-results" class="section">
-<h2 class="section-title">Simulation · Motion-Speed Sensitivity</h2>
-<p class="section-sub">Three controlled Gazebo settings share the static layout, sensor configuration, and dynamic-object density while varying object speed.</p>
-<h3 class="table-title">Gazebo Seq. 01 · Slow</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Gazebo slow motion"><table><caption>Gazebo slow motion</caption><thead><tr><th scope="col">Method</th><th scope="col">PR (%) ↑</th><th scope="col">RR (%) ↑</th><th scope="col">F1 (%) ↑</th><th scope="col">CD (m) ↓</th><th scope="col">Map RMSE (m) ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.291</td><td>0.516</td></tr><tr><th scope="row">FAST-LIO2 + Removert</th><td>66.799</td><td>80.143</td><td>72.865</td><td>0.586</td><td>0.690</td></tr><tr><th scope="row">FAST-LIO2 + FreeDOM</th><td>95.906</td><td><b>96.833</b></td><td>96.367</td><td>0.110</td><td><b>0.219</b></td></tr><tr><th scope="row">Dynamic-LIO</th><td>54.299</td><td>36.836</td><td>43.894</td><td>0.791</td><td>0.935</td></tr><tr><th scope="row">BTSA</th><td>--</td><td>--</td><td>--</td><td>0.649</td><td>0.870</td></tr><tr><th scope="row" class="ours">DOR-LIO (Ours)</th><td class="ours"><b>96.392</b></td><td class="ours">96.748</td><td class="ours"><b>96.570</b></td><td class="ours"><b>0.093</b></td><td class="ours">0.287</td></tr></tbody></table></div>
-<h3 class="table-title">Gazebo Seq. 02 · Medium</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Gazebo medium motion"><table><caption>Gazebo medium motion</caption><thead><tr><th scope="col">Method</th><th scope="col">PR (%) ↑</th><th scope="col">RR (%) ↑</th><th scope="col">F1 (%) ↑</th><th scope="col">CD (m) ↓</th><th scope="col">Map RMSE (m) ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.312</td><td>0.523</td></tr><tr><th scope="row">FAST-LIO2 + Removert</th><td>58.952</td><td>78.978</td><td>67.511</td><td>0.572</td><td>0.659</td></tr><tr><th scope="row">FAST-LIO2 + FreeDOM</th><td>74.647</td><td>80.561</td><td>77.491</td><td>0.158</td><td><b>0.203</b></td></tr><tr><th scope="row">Dynamic-LIO</th><td>52.042</td><td>36.141</td><td>42.657</td><td>0.810</td><td>0.948</td></tr><tr><th scope="row">BTSA</th><td>--</td><td>--</td><td>--</td><td>0.172</td><td>0.369</td></tr><tr><th scope="row" class="ours">DOR-LIO (Ours)</th><td class="ours"><b>96.792</b></td><td class="ours"><b>96.722</b></td><td class="ours"><b>96.757</b></td><td class="ours"><b>0.097</b></td><td class="ours">0.284</td></tr></tbody></table></div>
-<h3 class="table-title">Gazebo Seq. 03 · Fast</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Gazebo fast motion"><table><caption>Gazebo fast motion</caption><thead><tr><th scope="col">Method</th><th scope="col">PR (%) ↑</th><th scope="col">RR (%) ↑</th><th scope="col">F1 (%) ↑</th><th scope="col">CD (m) ↓</th><th scope="col">Map RMSE (m) ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>0.297</td><td>0.509</td></tr><tr><th scope="row">FAST-LIO2 + Removert</th><td>58.722</td><td>80.137</td><td>67.778</td><td>0.581</td><td>0.668</td></tr><tr><th scope="row">FAST-LIO2 + FreeDOM</th><td>76.981</td><td>82.714</td><td>79.745</td><td>0.156</td><td><b>0.208</b></td></tr><tr><th scope="row">Dynamic-LIO</th><td>49.554</td><td>34.571</td><td>40.728</td><td>0.832</td><td>0.955</td></tr><tr><th scope="row">BTSA</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr><tr><th scope="row" class="ours">DOR-LIO (Ours)</th><td class="ours"><b>96.590</b></td><td class="ours"><b>96.736</b></td><td class="ours"><b>96.663</b></td><td class="ours"><b>0.101</b></td><td class="ours">0.273</td></tr></tbody></table></div>
-<p class="table-note">PR = voxel-wise static preservation; RR = voxel-wise dynamic rejection; F1 = their harmonic mean. CD = Chamfer distance. CD and map RMSE use the static ground-truth map. -- = unavailable. × is retained from the manuscript for FAST-LIO2 DOR cells; these cells do not report removal scores. Bold marks the best available value per column.</p>
-<p class="result-reading">DOR-LIO records F1 values of 96.570%, 96.757%, and 96.663% across the tested speeds and the lowest CD in each setting. FAST-LIO2 + FreeDOM has the lowest map RMSE in all three settings.</p>
-<figure class="figure"><img loading="lazy" src="images/paper/image.png" alt="Gazebo scene and mapping comparison"><p class="fig-caption">Recorded qualitative evaluation in a dynamic Gazebo scene.</p></figure>
-</section>
-<!-- ==================== OUR DATASETS ==================== -->
-<section id="our-datasets" class="section section-tint">
-<h2 class="section-title">Results on Our Cross-Device Dataset</h2>
-<p class="section-sub">Real-world data collected with quadruped, omni-directional, humanoid, and handheld platforms, using Livox Mid-360 and Odin LiDARs.</p>
-<figure class="figure"><img loading="lazy" src="images/paper/display.png" alt="Platforms and representative maps"><p class="fig-caption">Quadruped, omni-directional UGV, humanoid, and handheld deployments.</p></figure>
-<h3 class="table-title">Self-Collected Sequences · Drift and Map Quality</h3>
-<div class="table-wrap" tabindex="0" role="region" aria-label="Self-collected dataset evaluation"><table><caption>Self-collected dataset evaluation</caption><thead><tr><th scope="col">Method</th><th scope="col">Mall 01 Drift (m) ↓</th><th scope="col">Mall 01 MME ↓</th><th scope="col">Mall 02 Drift (m) ↓</th><th scope="col">Mall 02 MME ↓</th><th scope="col">School 01 Drift (m) ↓</th><th scope="col">School 01 MME ↓</th></tr></thead><tbody><tr><th scope="row">FAST-LIO2</th><td>0.072</td><td>-3.078</td><td>0.029</td><td>-3.220</td><td>--</td><td>--</td></tr><tr><th scope="row">FAST-LIO2+FreeDOM</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td></tr><tr><th scope="row">Dynamic-LIO</th><td>348.59</td><td class="fail">×</td><td class="fail">×</td><td class="fail">×</td><td>--</td><td>--</td></tr><tr><th scope="row">TRLO</th><td>10.579</td><td>0.652</td><td>6.416</td><td>1.395</td><td>--</td><td>--</td></tr><tr><th scope="row">BTSA</th><td>0.211</td><td>-1.476</td><td>0.018</td><td>-1.485</td><td>--</td><td>--</td></tr><tr><th scope="row" class="ours">DOR-LIO</th><td class="ours"><b>0.041</b></td><td class="ours"><b>-3.438</b></td><td class="ours"><b>0.004</b></td><td class="ours"><b>-3.560</b></td><td class="ours">--</td><td class="ours">--</td></tr></tbody></table></div>
-<p class="table-note">Drift = end-to-end translation error on a closed trajectory; MME = Mean Map Entropy. Lower is better for both. -- = unavailable; × marks failed / invalid results as supplied in the manuscript. School 01 results are not yet reported.</p>
-<figure class="figure"><img loading="lazy" src="images/paper/mall03.png" alt="Shopping-mall mapping results"><p class="fig-caption">Mapping in a crowded shopping mall, with views of the central atrium and escalator area.</p></figure>
-<h3 class="table-title">Processing Time</h3>
-<div class="stats-band">
-<div class="stat"><div class="stat-num">24.54<span class="stat-unit">ms</span></div><div class="stat-label">reported global mean per scan</div></div>
-<div class="stat"><div class="stat-num">16.00–30.80<span class="stat-unit">ms</span></div><div class="stat-label">reported processing-time range</div></div>
-<div class="stat"><div class="stat-num">2–5<span class="stat-unit">ms</span></div><div class="stat-label">DOR + map update</div></div>
-<div class="stat"><div class="stat-num">10<span class="stat-unit">Hz</span></div><div class="stat-label">reference LiDAR scan rate</div></div>
-</div>
-<figure class="figure"><img loading="lazy" src="images/paper/fps_modules.png" alt="Average module processing times"><p class="fig-caption">Average per-scan processing time: preprocessing, state estimation, and DOR &amp; map update. Intel Core i7-14700KF CPU; 16 GB RAM.</p></figure>
-<p class="table-note">The figure reports average module timings. These summaries do not establish tail latency or end-to-end system throughput.</p>
-</section>
-
-<!-- ============================ CITATION ============================ -->
 <section id="citation" class="section">
   <h2 class="section-title">Citation</h2>
   <p class="section-sub">If you find this work useful, please cite:</p>
@@ -338,11 +352,12 @@
 <script src="js/vendor/three.min.js"></script>
 <script src="js/ply-loader.js"></script>
 <script src="js/orbit-controls.js"></script>
-<script src="js/cloud-viewer.js"></script>
-<script src="js/compare-viewer.js"></script>
+<script src="js/cloud-viewer.js?v=20260911-autoplay2"></script>
+<script src="js/compare-viewer.js?v=20260911-autoplay2"></script>
 <script src="js/scenes.js"></script>
-<script src="js/video-gallery.js"></script>
-<script src="js/sync-player.js"></script>
-<script src="js/main.js"></script>
+<script src="js/video-gallery.js?v=20260911-autoplay2"></script>
+<script src="js/sync-player.js?v=20260911-autoplay2"></script>
+<script src="js/benchmark-player.js?v=20260911-autoplay2"></script>
+<script src="js/main.js?v=20260911-autoplay2"></script>
 </body>
 </html>
