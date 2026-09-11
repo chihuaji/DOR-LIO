@@ -89,6 +89,9 @@
     });
     v.addEventListener('canplay', start);
     v.addEventListener('seeked', start);
+    v.addEventListener('playing', () => {
+      if (wanted && visible && videos.every(p => !p.paused && p.readyState >= 3)) status.textContent = 'Playing · Muted';
+    });
     v.addEventListener('waiting', () => {
       if (wanted && visible) status.textContent = 'Loading video…';
     });

@@ -63,8 +63,12 @@
   }));
   videos.forEach(v => {
     v.muted = true; v.defaultMuted = true; v.loop = true;
+    v.addEventListener('loadedmetadata', () => { v.style.aspectRatio = `${v.videoWidth} / ${v.videoHeight}`; });
     v.addEventListener('canplay', play);
     v.addEventListener('seeked', play);
+    v.addEventListener('playing', () => {
+      if (wanted && visible && videos.every(p => !p.paused && p.readyState >= 3)) status.textContent = 'Playing · Muted';
+    });
     v.addEventListener('waiting', () => { if (wanted && visible) status.textContent = 'Loading video…'; });
     v.addEventListener('error', () => { failed = true; wanted = false; pause(); status.textContent = 'Unable to load this video. Select another sequence or reload to retry.'; refresh(); });
   });

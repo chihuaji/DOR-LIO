@@ -9,7 +9,9 @@
   async function fetchPLY(url, onProgress, options) {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
-    const total = Number(res.headers.get('Content-Length')) || 0;
+    // Fetch exposes decoded chunks, while Content-Length may describe gzip bytes.
+    const encoding = res.headers.get('Content-Encoding');
+    const total = !encoding || encoding === 'identity' ? Number(res.headers.get('Content-Length')) || 0 : 0;
     if (!res.body || !window.ReadableStream) return new Uint8Array(await res.arrayBuffer());
     const reader = res.body.getReader();
     const chunks = [];

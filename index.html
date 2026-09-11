@@ -7,7 +7,7 @@
   <meta name="description" content="DOR-LIO jointly performs tightly-coupled LiDAR-inertial state estimation and online dynamic object removal within a unified multi-resolution voxel map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20260911-display3">
   <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -216,6 +216,13 @@
 <div class="table-wrap" tabindex="0" role="region" aria-label="Translation APE RMSE on public datasets"><table><caption>Translation APE RMSE on public datasets</caption><thead><tr><th scope="col">Sequence</th><th scope="col">A-LOAM</th><th scope="col">LIO-SAM</th><th scope="col">Dynamic-LIO</th><th scope="col">VoxelMap</th><th scope="col">FAST-LIO2</th><th scope="col">BTSA</th><th scope="col">TRLO</th><th scope="col">LIMOT</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">M1 · Dynamic01</th><td>0.171</td><td>0.140</td><td>0.140</td><td>0.625</td><td>0.143</td><td>0.142</td><td>0.981</td><td>3.468</td><td class="ours"><b>0.138</b></td></tr><tr><th scope="row">M2 · Dynamic02</th><td>0.147</td><td>0.136</td><td>0.149</td><td><b>0.127</b></td><td>0.138</td><td>--</td><td>--</td><td>--</td><td class="ours">0.136</td></tr><tr><th scope="row">M3 · MountainTopPark01</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td>0.79</td><td>0.80</td><td>--</td><td class="ours"><b>0.64</b></td></tr><tr><th scope="row">M4 · MountainTopPark02</th><td>--</td><td>--</td><td>--</td><td>--</td><td>--</td><td><b>1.83</b></td><td>1.91</td><td>--</td><td class="ours">1.89</td></tr><tr><th scope="row">P1 · Promenade01</th><td>--</td><td>2.06</td><td>--</td><td>1.55</td><td>2.15</td><td>3.65</td><td>3.37</td><td><b>1.30</b></td><td class="ours">2.06</td></tr><tr><th scope="row">P2 · Promenade02</th><td>--</td><td>0.47</td><td>--</td><td class="fail">×</td><td class="fail">×</td><td>0.64</td><td>0.54</td><td><b>0.18</b></td><td class="ours">0.37</td></tr><tr><th scope="row">U1 · UrbanNav-HK-Data20190428</th><td>--</td><td>--</td><td>4.18</td><td>--</td><td>4.11</td><td><b>3.43</b></td><td>11.96</td><td>--</td><td class="ours">--</td></tr><tr><th scope="row">U2 · UrbanNav-HK-Data20200314</th><td>--</td><td>--</td><td>1.91</td><td>--</td><td>1.13</td><td><b>0.91</b></td><td>0.94</td><td>--</td><td class="ours">--</td></tr></tbody></table></div>
 <p class="table-note">Lower is better. Bold marks the lowest available RMSE per sequence. -- = unavailable or inapplicable; × = trajectory divergence. BTSA and corresponding baseline results are quoted from the BTSA paper, as specified in the manuscript.</p>
 <p class="result-reading">DOR-LIO reports 0.64 m on MountainTopPark01 and 0.37 m on Promenade02. Localization remains competitive across the reported sequences, with different methods leading on different scenes.</p>
+<figure class="helimos-comparison">
+  <a href="images/paper/compare_helimos.png" target="_blank" rel="noopener" aria-label="Open full-resolution HeLiMOS comparison">
+    <img src="images/paper/compare_helimos.png" alt="HeLiMOS map comparison: Raw Map, BTSA, DUFOMap, ERASOR2, and Ours, with enlarged regions below." loading="lazy">
+  </a>
+  <figcaption>HeLiMOS · Qualitative Map Comparison. Click the figure to view at full resolution.</figcaption>
+</figure>
+
 <h3 class="table-title">HeLiMOS · Point-wise Dynamic Removal (%) ↑</h3>
 <div class="table-wrap" tabindex="0" role="region" aria-label="HeLiMOS point-wise removal with ground-truth poses"><table><caption>HeLiMOS point-wise removal with ground-truth poses</caption><thead><tr><th scope="col">Sensor</th><th scope="col">Metric</th><th scope="col">BeautyMap</th><th scope="col">DUFOMap</th><th scope="col">ERASOR</th><th scope="col">Dynablox</th><th scope="col">BTSA</th><th scope="col" class="ours">DOR-LIO</th></tr></thead><tbody><tr><th scope="row">Aeva</th><th scope="row">SA</th><td>69.34</td><td>91.93</td><td><b>99.21</b></td><td>97.64</td><td>91.50</td><td class="ours">63.92</td></tr><tr><th scope="row">Aeva</th><th scope="row">DA</th><td>79.98</td><td>79.33</td><td>44.56</td><td>64.78</td><td>77.77</td><td class="ours"><b>90.49</b></td></tr><tr><th scope="row">Aeva</th><th scope="row">HA</th><td>74.12</td><td><b>84.57</b></td><td>59.96</td><td>75.81</td><td>82.50</td><td class="ours">74.83</td></tr><tr><th scope="row">Avia</th><th scope="row">SA</th><td>79.77</td><td>96.30</td><td><b>99.35</b></td><td>95.21</td><td>93.66</td><td class="ours">71.56</td></tr><tr><th scope="row">Avia</th><th scope="row">DA</th><td>85.30</td><td>72.33</td><td>36.15</td><td>59.54</td><td>67.64</td><td class="ours"><b>91.25</b></td></tr><tr><th scope="row">Avia</th><th scope="row">HA</th><td><b>81.51</b></td><td>80.43</td><td>50.60</td><td>69.42</td><td>75.87</td><td class="ours">79.98</td></tr><tr><th scope="row">Ouster</th><th scope="row">SA</th><td>92.24</td><td>90.06</td><td><b>99.54</b></td><td>97.02</td><td>95.46</td><td class="ours">62.64</td></tr><tr><th scope="row">Ouster</th><th scope="row">DA</th><td>86.72</td><td>90.23</td><td>54.36</td><td>71.68</td><td>72.07</td><td class="ours"><b>96.16</b></td></tr><tr><th scope="row">Ouster</th><th scope="row">HA</th><td>89.27</td><td><b>89.99</b></td><td>69.56</td><td>82.09</td><td>81.80</td><td class="ours">75.83</td></tr><tr><th scope="row">Velodyne</th><th scope="row">SA</th><td>76.62</td><td>85.18</td><td><b>99.84</b></td><td>97.62</td><td>74.15</td><td class="ours">76.84</td></tr><tr><th scope="row">Velodyne</th><th scope="row">DA</th><td>84.73</td><td>13.12</td><td>7.90</td><td>31.87</td><td>48.93</td><td class="ours"><b>87.27</b></td></tr><tr><th scope="row">Velodyne</th><th scope="row">HA</th><td>80.10</td><td>21.58</td><td>14.06</td><td>47.33</td><td>57.79</td><td class="ours"><b>81.66</b></td></tr></tbody></table></div>
 <p class="table-note">SA = static-point recall; DA = dynamic-point recall; HA = harmonic mean. All methods use ground-truth poses. Values are reported as supplied in the manuscript; HA is not recomputed from the displayed aggregate SA/DA. BeautyMap, DUFOMap, Dynablox, and BTSA are quoted from BTSA. The ERASOR source is not specified in the table note.</p>
@@ -349,15 +356,15 @@
   <p class="footer-small">© 2026 Anonymous Authors. Point cloud demos run fully in your browser (three.js).</p>
 </footer>
 
-<script src="js/vendor/three.min.js"></script>
-<script src="js/ply-loader.js"></script>
-<script src="js/orbit-controls.js"></script>
-<script src="js/cloud-viewer.js?v=20260911-autoplay2"></script>
-<script src="js/compare-viewer.js?v=20260911-autoplay2"></script>
-<script src="js/scenes.js"></script>
-<script src="js/video-gallery.js?v=20260911-autoplay2"></script>
-<script src="js/sync-player.js?v=20260911-autoplay2"></script>
-<script src="js/benchmark-player.js?v=20260911-autoplay2"></script>
-<script src="js/main.js?v=20260911-autoplay2"></script>
+<script src="js/vendor/three.min.js?v=20260911-display3"></script>
+<script src="js/ply-loader.js?v=20260911-display3"></script>
+<script src="js/orbit-controls.js?v=20260911-display3"></script>
+<script src="js/cloud-viewer.js?v=20260911-display3"></script>
+<script src="js/compare-viewer.js?v=20260911-display3"></script>
+<script src="js/scenes.js?v=20260911-display3"></script>
+<script src="js/video-gallery.js?v=20260911-display3"></script>
+<script src="js/sync-player.js?v=20260911-display3"></script>
+<script src="js/benchmark-player.js?v=20260911-display3"></script>
+<script src="js/main.js?v=20260911-display3"></script>
 </body>
 </html>

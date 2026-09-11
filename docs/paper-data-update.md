@@ -54,3 +54,10 @@ All source clips are 14.838 s. They use lossless video stream-copy with fast-sta
 indexing and omit audio. The source videos are retained. A shared control bar
 keeps paired playback, seeking, looping and pause synchronized. The old single
 M3DGR video is no longer embedded; all quantitative tables are unchanged.
+
+## HeLiMOS qualitative figure (2026-09-11)
+
+Added the user-selected `/home/hyd/Downloads/compare_helimos.png` unchanged as
+`images/paper/compare_helimos.png`, immediately before the HeLiMOS table.
+It compares Raw Map, BTSA, DUFOMap, ERASOR2, and Ours; no numerical values
+or color semantics have been inferred from this figure.

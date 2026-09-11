@@ -85,9 +85,9 @@
       this._loadingBar.style.width = '4%';
       try {
         const buf = await DORPLY.fetchPLY(url, (done, total) => {
-          const pct = total ? Math.round(done / total * 100) : 0;
+          const pct = total ? Math.min(100, Math.round(done / total * 100)) : 0;
           this._loadingBar.style.width = Math.max(pct, 4) + '%';
-          if (total) this._loadingText.textContent = `Loading map… ${pct}%`;
+          this._loadingText.textContent = total ? `Loading map… ${pct}%` : `Loading map… ${(done / 1048576).toFixed(1)} MB`;
         });
         const geo = DORPLY.parsePLY(buf);
         if (this._points) {

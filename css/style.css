@@ -575,7 +575,7 @@ td.fail { color: var(--red); font-weight: 700; }
 .benchmark-pair figure { margin: 0; min-width: 0; }
 .benchmark-pair figcaption { text-align: center; color: var(--accent); font-weight: 600; font-size: 1.1rem; margin-bottom: 10px; }
 .benchmark-pair figure + figure figcaption { color: #e33a42; }
-.benchmark-pair video { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #05070b; border: 1px solid var(--line); border-radius: 16px; }
+.benchmark-pair video { display: block; width: 100%; aspect-ratio: 854 / 480; object-fit: contain; background: #05070b; border: 1px solid var(--line); border-radius: 16px; }
 .benchmark-controls { max-width: 720px; margin: 18px auto 0; }
 .benchmark-player > .sync-status { text-align: center; }
 .sync-top .sync-view video { aspect-ratio: 4 / 3; }
@@ -586,3 +586,7 @@ td.fail { color: var(--red); font-weight: 700; }
   .benchmark-pair video { border-radius: 9px; }
   .benchmark-heading { font-size: 1.35rem; }
 }
+
+.helimos-comparison { margin: 36px 0 24px; }
+.helimos-comparison img { display: block; width: 100%; height: auto; }
+.helimos-comparison figcaption { margin-top: 12px; text-align: center; color: var(--ink-soft); font-size: .86rem; }

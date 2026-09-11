@@ -118,8 +118,8 @@
         const loadOne = async (url, tag) => {
           const buf = await DORPLY.fetchPLY(url, (d, t) => {
             if (request !== this._request) return;
-            const pct = t ? Math.round(d / t * 100) : 0;
-            this._loadingText.textContent = `Loading ${tag}… ${pct}%`;
+            const pct = t ? Math.min(100, Math.round(d / t * 100)) : 0;
+            this._loadingText.textContent = t ? `Loading ${tag}… ${pct}%` : `Loading ${tag}… ${(d / 1048576).toFixed(1)} MB`;
             this._loadingBar.style.width = Math.max(pct, 4) + '%';
           }, { signal: request.signal });
           if (request.signal.aborted) return null;
