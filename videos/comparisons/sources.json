@@ -1,0 +1,59 @@
+[
+  {
+    "scene": "human",
+    "inputs": [
+      {
+        "source": "/home/hyd/icra-dor-ws/dor-web/videos/human/dorlio_reference_topdown_axes_stride10.mp4",
+        "sha256": "ce683e81fc3ddc22de65c0986736c98ad4a8b79abbb0cf41a55db7480eb02aa0",
+        "duration": 44.0
+      },
+      {
+        "source": "/home/hyd/icra-dor-ws/dor-web/videos/human/fastlio2_reference_topdown_axes_stride10.mp4",
+        "sha256": "15dd0078c09c211f2cc2ed03e4cf44a2c5d572e53b147d2888ceb3413937c831",
+        "duration": 47.8
+      }
+    ],
+    "common_sensor_interval": false,
+    "timing": "Original playback speed preserved. Shorter recording holds its final frame; Human screen recordings are not sensor-synchronized.",
+    "output": "human.mp4",
+    "sha256": "c19eba148b4a5c4154cd6379d7c519e4be9f7b961a6129ddbdf28bcda8994f84"
+  },
+  {
+    "scene": "stairs",
+    "inputs": [
+      {
+        "source": "/home/hyd/dynamic_ws/stairs_compare_work/previews/user_side_v1/videos/seq01_3to2/dor_height.mp4",
+        "sha256": "632815b62444e20458644bce6ae0d51b993bd529c52933e0cba1f081aa7acdbb",
+        "duration": 61.767
+      },
+      {
+        "source": "/home/hyd/dynamic_ws/stairs_compare_work/previews/requested_fastlio2_ws/videos/seq01_3to2/fast_height.mp4",
+        "sha256": "9026f934bd4566647895b7dfe37be530fc1f4053d9fc6aab0c17b601c09cd16f",
+        "duration": 61.767
+      }
+    ],
+    "common_sensor_interval": true,
+    "timing": "Common sensor interval, 2x playback.",
+    "output": "stairs.mp4",
+    "sha256": "4777e100091661e050183283c248caaf3c0dc969a4c0a691299b62efa2684bff"
+  },
+  {
+    "scene": "omni",
+    "inputs": [
+      {
+        "source": "/home/hyd/dynamic_ws/omni_compare_work/videos/test2/dor_height.mp4",
+        "sha256": "f234967bec627bf229b6b67cc8bb0f2460c69b13d8cad2440b0bda5bdfb6e86d",
+        "duration": 54.7
+      },
+      {
+        "source": "/home/hyd/dynamic_ws/omni_compare_work/videos/test2_requested/fast_height.mp4",
+        "sha256": "7c36e167dee1677839000e8e54aad9976573ca705f5495144c638c4874907ba0",
+        "duration": 54.7
+      }
+    ],
+    "common_sensor_interval": true,
+    "timing": "Common sensor interval, 2x playback.",
+    "output": "omni.mp4",
+    "sha256": "33ede5a3d4fe27c50a806cee59c69826c7074e3c27bb4c3e6f9879ea47b043cd"
+  }
+]
