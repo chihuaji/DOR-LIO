@@ -232,22 +232,23 @@
 <section id="video" class="section">
   <h2 class="section-title">Cross-Platform Comparison</h2>
   <p class="section-sub">Explore dynamic removal and mapping across four platforms.
-  Select a scene to watch the recorded comparison.</p>
+  Select a scene to watch the recorded comparison. Red points on FAST-LIO2 maps indicate
+  DOR-LIO dynamic labels, not FAST-LIO2 detections or ground truth.</p>
   <div class="video-showcase" data-video-gallery>
     <div class="video-tabs" role="group" aria-label="Choose a platform">
-      <button type="button" class="video-tab is-active" aria-pressed="true" data-src="videos/comparisons/human.mp4" data-poster="videos/comparisons/human.jpg" data-title="Humanoid" data-description="Human · DOR-LIO (left) and FAST-LIO2 (right). Independent screen recordings; not sensor-synchronized. The shorter recording holds its final frame.">Humanoid</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/comparisons/stairs.mp4" data-poster="videos/comparisons/stairs.jpg" data-title="Stairs" data-description="Stairs · DOR-LIO (left) and FAST-LIO2 (right). Shared side view and sensor interval; 2× playback.">Stairs</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/comparisons/omni.mp4" data-poster="videos/comparisons/omni.jpg" data-title="Omni-directional UGV" data-description="Omni-UGV test2 · DOR-LIO (left) and FAST-LIO2 (right). Shared top-down view and sensor interval; 2× playback.">Omni-UGV</button>
-      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/optimized/longhu.mp4" data-poster="images/video-longhu.jpg" data-title="Handheld · Shopping Mall" data-description="Shopping mall 02 · DOR-LIO, FAST-LIO2, and Dynamic-LIO">Handheld / Mall</button>
+      <button type="button" class="video-tab is-active" aria-pressed="true" data-src="videos/comparisons/human.mp4?v=red-20260921" data-poster="videos/comparisons/human.jpg?v=red-20260921" data-title="Humanoid" data-description="Human · DOR-LIO (left) and FAST-LIO2 (right). Independent screen recordings; not sensor-synchronized. The shorter recording holds its final frame.">Humanoid</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/comparisons/stairs.mp4?v=red-20260921" data-poster="videos/comparisons/stairs.jpg?v=red-20260921" data-title="Stairs" data-description="Stairs · DOR-LIO (left) and FAST-LIO2 (right). Shared side view and sensor interval; 2× playback.">Stairs</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/comparisons/omni.mp4?v=red-20260921" data-poster="videos/comparisons/omni.jpg?v=red-20260921" data-title="Omni-directional UGV" data-description="Omni-UGV test2 · DOR-LIO (left) and FAST-LIO2 (right). Shared top-down view and sensor interval; 2× playback.">Omni-UGV</button>
+      <button type="button" class="video-tab" aria-pressed="false" data-src="videos/optimized/longhu.mp4?v=red-20260921" data-poster="images/video-longhu.jpg?v=red-20260921" data-title="Handheld · Shopping Mall" data-description="Shopping mall 02 · DOR-LIO, FAST-LIO2, and Dynamic-LIO">Handheld / Mall</button>
     </div>
     <div class="video-stage">
-      <video id="cross-platform-player" controls muted loop playsinline preload="metadata" poster="videos/comparisons/human.jpg" src="videos/comparisons/human.mp4" aria-label="Humanoid comparison video"></video>
+      <video id="cross-platform-player" controls muted loop playsinline preload="metadata" poster="videos/comparisons/human.jpg?v=red-20260921" src="videos/comparisons/human.mp4?v=red-20260921" aria-label="Humanoid comparison video"></video>
     </div>
     <div class="video-caption" aria-live="polite">
       <h3 data-video-title>Humanoid</h3>
       <p data-video-description>Human · DOR-LIO (left) and FAST-LIO2 (right). Independent screen recordings; not sensor-synchronized. The shorter recording holds its final frame.</p>
     </div>
-    <p class="video-error" hidden>Unable to play this video. <a href="videos/comparisons/human.mp4" data-video-download>Open the MP4 directly</a>.</p>
+    <p class="video-error" hidden>Unable to play this video. <a href="videos/comparisons/human.mp4?v=red-20260921" data-video-download>Open the MP4 directly</a>.</p>
   </div>
 </section>
 

@@ -8,15 +8,16 @@
         "duration": 44.0
       },
       {
-        "source": "/home/hyd/icra-dor-ws/dor-web/videos/human/fastlio2_reference_topdown_axes_stride10.mp4",
-        "sha256": "15dd0078c09c211f2cc2ed03e4cf44a2c5d572e53b147d2888ceb3413937c831",
-        "duration": 47.8
+        "source": "/home/hyd/dynamic_ws/a2_dor_yflio_work/methods/fastlio2_requested_20260921/videos/fastlio2_dynamic_red.mp4",
+        "sha256": "52f756497fe87b7430281eaf28244abf13d128551ec2eab7b2f9a3cf6f3b23fd",
+        "duration": 42.9
       }
     ],
+    "red_points": "DOR posterior DYNAMIC=2 labels on FAST-LIO2 output; not FAST-LIO2 detection or ground truth.",
     "common_sensor_interval": false,
     "timing": "Original playback speed preserved. Shorter recording holds its final frame; Human screen recordings are not sensor-synchronized.",
     "output": "human.mp4",
-    "sha256": "c19eba148b4a5c4154cd6379d7c519e4be9f7b961a6129ddbdf28bcda8994f84"
+    "sha256": "2419cb57b6b257fe0951bf0af2ee41431d57cd3a9b5eed004ac462d9475d0eb3"
   },
   {
     "scene": "stairs",
@@ -27,15 +28,16 @@
         "duration": 61.767
       },
       {
-        "source": "/home/hyd/dynamic_ws/stairs_compare_work/previews/requested_fastlio2_ws/videos/seq01_3to2/fast_height.mp4",
-        "sha256": "9026f934bd4566647895b7dfe37be530fc1f4053d9fc6aab0c17b601c09cd16f",
+        "source": "/home/hyd/dynamic_ws/stairs_compare_work/previews/requested_fastlio2_ws/videos/seq01_3to2/fast_dor_dynamic_red.mp4",
+        "sha256": "50b595733fc43e7d9315147849fc5b27a65d301eeea4d162f1754140c771f226",
         "duration": 61.767
       }
     ],
+    "red_points": "DOR posterior DYNAMIC=2 labels on FAST-LIO2 output; not FAST-LIO2 detection or ground truth.",
     "common_sensor_interval": true,
     "timing": "Common sensor interval, 2x playback.",
     "output": "stairs.mp4",
-    "sha256": "4777e100091661e050183283c248caaf3c0dc969a4c0a691299b62efa2684bff"
+    "sha256": "fe69c3b19a9b084198294ff5678a0e57a496188917ae85579bd36d4424393a05"
   },
   {
     "scene": "omni",
@@ -46,14 +48,15 @@
         "duration": 54.7
       },
       {
-        "source": "/home/hyd/dynamic_ws/omni_compare_work/videos/test2_requested/fast_height.mp4",
-        "sha256": "7c36e167dee1677839000e8e54aad9976573ca705f5495144c638c4874907ba0",
+        "source": "/home/hyd/dynamic_ws/omni_compare_work/videos/test2_requested_red/fast_dor_dynamic_red.mp4",
+        "sha256": "fa5788bc1d395e997d20ed854f3442c03b3c63e9af6e6e1d723ff7b8957ca04a",
         "duration": 54.7
       }
     ],
+    "red_points": "DOR posterior DYNAMIC=2 labels on FAST-LIO2 output; not FAST-LIO2 detection or ground truth.",
     "common_sensor_interval": true,
     "timing": "Common sensor interval, 2x playback.",
     "output": "omni.mp4",
-    "sha256": "33ede5a3d4fe27c50a806cee59c69826c7074e3c27bb4c3e6f9879ea47b043cd"
+    "sha256": "7f86d2d6626bb49d652f9be755b3278ead4b139bf1efc2ee8d0de17d60e0356b"
   }
 ]
