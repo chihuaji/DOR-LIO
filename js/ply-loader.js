@@ -7,6 +7,22 @@
   const HEADER_STATE = { MAGIC: 0, BODY: 1 };
 
   async function fetchPLY(url, onProgress, options) {
+    try {
+      return await fetchPLYOverNetwork(url, onProgress, options);
+    } catch (err) {
+      if (options && options.signal && options.signal.aborted) throw err;
+      if (!global.DOREmbed) throw err;
+      // Sandboxed mirrors (anonymous.4open.science) block page fetches via a
+      // CSP without allow-same-origin; fall back to the embedded copy.
+      try {
+        return await global.DOREmbed.loadBinary(url, onProgress, options && options.signal);
+      } catch (fallbackErr) {
+        throw err;
+      }
+    }
+  }
+
+  async function fetchPLYOverNetwork(url, onProgress, options) {
     const res = await fetch(url, options);
     if (!res.ok) throw new Error(`${url}: HTTP ${res.status}`);
     // Fetch exposes decoded chunks, while Content-Length may describe gzip bytes.

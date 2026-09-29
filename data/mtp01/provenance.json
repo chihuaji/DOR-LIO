@@ -1,0 +1,26 @@
+{
+  "sampling": "Deterministic uniform sample, no recoloring or geometry registration applied",
+  "maps": {
+    "mtp01_dor": {
+      "source_name": "mtp01_dorlio_final_static_height_rgb.pcd",
+      "source_sha256": "8f9a2e253ed1a7b8b33364413e0afdda3eeb567768dc6da37b93571f54936cdf",
+      "source_points": 3822290,
+      "display_points": 650000,
+      "display_red_points": 0
+    },
+    "mtp01_btsa": {
+      "source_name": "mtp01_btsa_icp_aligned.pcd",
+      "source_sha256": "ee84f61656a87404866f367a7a812524aa8de9ea6fb7c16cc2500b3cf565d409",
+      "source_points": 4892201,
+      "display_points": 650000,
+      "display_red_points": 85702
+    }
+  },
+  "trajectory": {
+    "source_sha256": "a1a7aab4cf571155bf2a3b8436162192525f8ee13c0053379c29c6aba3cd3557",
+    "poses": 2881,
+    "duration_s": 287.9999985694885,
+    "camera": "Gaussian-smoothed position and path heading; 13 degree down pitch; display camera, not sensor attitude",
+    "red_semantics": "DOR-derived dynamic display labels on BTSA accumulation, not BTSA predictions or ground truth"
+  }
+}
