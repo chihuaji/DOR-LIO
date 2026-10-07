@@ -47,9 +47,9 @@ html,body{background:var(--paper);color:var(--fg)}body{font-family:Inter,Arial,s
 <h2 class="section-title">Key Contributions</h2>
 <p class="section-sub">Dynamic removal and state estimation, in one iterative pipeline.</p>
 <div class="feature-grid contributions-grid">
-<article class="feature-card core-contribution"><span class="contribution-index">01</span><div class="contribution-copy"><span class="core-label">CORE CONTRIBUTION</span><h3>Iteratively coupled dynamic removal</h3><p>Each IESKF iteration refreshes visibility, static-point selection and geometric correspondences.</p></div></article>
-<article class="feature-card"><span class="contribution-index">02</span><div class="contribution-copy"><h3>A unified multi-resolution map</h3><p>One hierarchical map supports nearest-neighbor search and conservative ray casting.</p></div></article>
-<article class="feature-card"><span class="contribution-index">03</span><div class="contribution-copy"><h3>Update once, after convergence</h3><p>Keep the map read-only during estimation, then clear contradicted points and integrate static structure.</p></div></article>
+<article class="feature-card core-contribution"><span class="contribution-index">01</span><div class="contribution-copy"><span class="core-label">CORE CONTRIBUTION</span><h3>Iteratively coupled dynamic removal</h3><p>Static-point selection and pose refinement are iteratively coupled within the IESKF, reducing dynamic interference in registration and online map construction.</p></div></article>
+<article class="feature-card"><span class="contribution-index">02</span><div class="contribution-copy"><h3>A unified multi-resolution map</h3><p>A shared spatial hierarchy supports nearest-neighbor search, ray casting, free-space estimation and map maintenance for efficient online processing.</p></div></article>
+<article class="feature-card"><span class="contribution-index">03</span><div class="contribution-copy"><h3>Validation across datasets and platforms</h3><p>Competitive localization and static mapping on public datasets, in simulation, and across quadruped, wheeled, humanoid and handheld platforms. Highest voxel-wise F1 among evaluated methods on three of four HeLiMOS LiDAR types.</p></div></article>
 </div>
 </section>
 <section class="section" id="highlights">
